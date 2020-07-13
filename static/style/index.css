@@ -1,3 +1,5 @@
+
+/*navbar*/
 .sidebar {
     height: 100%;
     width: 0;
@@ -15,13 +17,13 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: #FF8C00;
+    color: rgb(0, 102, 255);
     display: block;
     transition: 0.3s;
 }
-  
+
 .sidebar a:hover {
-    color: #FF8C00;
+    color: rgb(0, 102, 255);
 }
   
 .sidebar .closebtn {
@@ -36,11 +38,17 @@
     font-size: 20px;
     cursor: pointer;
     background-color:#2E8B57;
-    color: #FF8C00;
+    color: rgb(0, 102, 255);
     padding: 10px 15px;
     border: none;
   }
   
 .openbtn:hover {
     background-color: #444;
+}
+
+
+/*index page*/
+#home{
+    color:blue;
 }

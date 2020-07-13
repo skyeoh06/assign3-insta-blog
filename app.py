@@ -26,14 +26,14 @@ app.secret_key = SESSION_KEY
 
 @app.route('/')
 def index():
-    render_template('index.template.html', title="Home")
+    return render_template('index.template.html', title="Home")
 
 # Create a insta blogger
 
 
 @app.route('/create')
 def create():
-    render_template('create.template.html', title="Create")
+    return render_template('create.template.html', title="Create")
 
 
 # "magic code" -- boilerplate
