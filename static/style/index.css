@@ -52,3 +52,20 @@
 #home{
     color:blue;
 }
+
+#home-example{
+    width:1200px;
+    margin:20px auto;
+    columns:2;
+    column-gap: 40px;
+}
+#home-example .box{
+    width:100%;
+    margin: 0 0 20px;
+    padding: 10px;
+    overflow: hidden;
+    break-inside: avoid;
+}
+#home-example .box img{
+    max-width: 100%;
+}
