@@ -1,0 +1,21 @@
+/*slide right to left*/
+div.slide-left{
+    width:100%;
+    overflow: hidden;
+}
+
+div.slide-left li{
+    animation:5s slide-left;
+    
+}
+
+@keyframes slide-left{
+    from{
+        margin-left: 100%;
+        width:300%;
+    }
+    to{
+        margin-top:0%;
+        width:100%;
+    }
+}

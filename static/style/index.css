@@ -7,7 +7,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: #2E8B57;
+    background-color: rgb(187, 206, 195);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -17,13 +17,13 @@
     padding: 8px 8px 8px 32px;
     text-decoration: none;
     font-size: 25px;
-    color: rgb(0, 102, 255);
+    color:rgb(28, 28, 107);
     display: block;
     transition: 0.3s;
 }
 
 .sidebar a:hover {
-    color: rgb(0, 102, 255);
+    color:rgb(28, 28, 107);
 }
   
 .sidebar .closebtn {
@@ -37,8 +37,8 @@
 .openbtn {
     font-size: 20px;
     cursor: pointer;
-    background-color:#2E8B57;
-    color: rgb(0, 102, 255);
+    background-color:rgb(187, 206, 195);;
+    color:rgb(28, 28, 107);
     padding: 10px 15px;
     border: none;
   }
@@ -50,22 +50,20 @@
 
 /*index page*/
 #home{
-    color:blue;
+    color:rgb(28, 28, 107);
+    background-image: url("/static/images/home-bg.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+#home-description{
+    columns:2;
+    column-gap: 10px;
 }
 
-#home-example{
-    width:1200px;
-    margin:20px auto;
-    columns:2;
-    column-gap: 40px;
-}
-#home-example .box{
+#home-description .box img{
     width:100%;
-    margin: 0 0 20px;
-    padding: 10px;
-    overflow: hidden;
-    break-inside: avoid;
 }
-#home-example .box img{
-    max-width: 100%;
-}
+
+
+
