@@ -62,6 +62,11 @@ def process_create():
     })
     return "blog created"
 
+# display the insta blog
+@app.route('/view')
+def view():
+    return render_template('view.template.html')
+    
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
