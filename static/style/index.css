@@ -65,5 +65,14 @@
     width:100%;
 }
 
+/*create page*/
+#create{
+        background-color: rgb(187, 206, 195);
+}
 
-
+input[type=submit] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  box-sizing: border-box;
+}

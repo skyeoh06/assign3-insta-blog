@@ -1,8 +1,61 @@
 {% extends 'layout.template.html' %} {% block content %}
-<h1>Testing 2</h1>
-
-
-
-
-
+<div class="container" id="create">
+    <h1>Create New Insta Blogs</h1>
+    <form method ="POST">
+        <div class="form-group">
+            <label>Title:</label>
+            <input type="text" name="title" class="form-control" placeholder="title of the image"/>
+        </div>
+        <div class="form-group">
+            <label>Categories:</label>
+            <input type="text" name="categories" class="form-control"/>
+        </div>
+        <div class="form-group">
+            <label >Date:</label>
+            <input type="date" name="create-date" class="form-control" placeholder="Date of created"/>
+        </div>
+        <div class="form-group">
+            <label>Thoughts:</label>
+            <textarea name="thought" class="form-control"></textarea>
+        </div>
+        <div>
+            <a id="upload_widget" class="cloudinary-button">Upload Images</a>
+            <input type="hidden" id="uploaded_file_url" name="uploaded_file_url"/>
+            <br/>
+            <p id="uploaded_file_display" style="display:none">Uploaded File Name:
+            <span id="uploaded_file_name"></span></p>
+        </div>  
+        <input type="submit" class="btn btn-info" value="Create"/>
+    </form>
+</div>    
 {%endblock%}
+{% block js %}
+<script src="https://widget.cloudinary.com/v2.0/global/all.js" type="text/javascript"></script>
+
+	<script type="text/javascript">
+		var myWidget = cloudinary.createUploadWidget({
+            cloudName: '{{cloud_name}}', 
+            uploadPreset: '{{upload_preset}}'}, (error, result) => { 
+                if (!error && result && result.event === "success") { 
+                    console.log('Done! Here is the image info: ', result.info); 
+                    let fileURL = document.querySelector('#uploaded_file_url');
+                    fileURL.value = result.info.url;
+
+                    let filenameDisplay = document.querySelector('#uploaded_file_display');
+
+                    // make it appear (by setting it to display: block)
+                    filenameDisplay.style.display = 'block';
+
+                    // fill in the file name
+                    let filenameDisplaySpan = document.querySelector("#uploaded_file_name");
+                    filenameDisplaySpan.innerText = result.info.original_filename;
+                }
+            }
+        )
+
+        document.getElementById("upload_widget").addEventListener("click", function(){
+                myWidget.open();
+        }, false);
+	</script>
+{%endblock%}	
+
