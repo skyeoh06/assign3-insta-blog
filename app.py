@@ -58,8 +58,8 @@ def process_create():
         'thoughts': thought,
         'uploaded_file_url': uploaded_file_url
     })
-    flash(f"New insta - blog '{title}' has been created")
     return redirect(url_for('index'))
+    flash(f"New insta - blog '{title}' has been created")
 
 # display the insta blog
 
@@ -70,14 +70,18 @@ def view():
     return render_template('view.template.html',
                            all_blog=all_blog)
 
-
-
 # details of the blog
 
 
-@app.route('/details')
+@app.route('/details/<id>')
 def details_blog(id):
-    return "details"
+    blog = client[DB_NAME].pictures.find_one({
+        '_id' : ObjectId(id)
+    })
+
+    return render_template('details_blog.template.html' , blog=blog,
+                           cloud_name=CLOUD_NAME,
+                           upload_preset=UPLOAD_PRESET)
 
 
 # update of the blog

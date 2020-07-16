@@ -7,12 +7,12 @@
         {%for blog in all_blog%}
             <div class="col-sm-3" id="blog-image">
                 <img src="{{blog.uploaded_file_url}}">
-                
             </div>
             <div class="col-sm-3" id="blog-content">
                 {{blog.title}}<br>
-                {{blog.thoughts}}<br><br>
-                <a href="{{url_for('details_blog',id=blog._id)}}" class="btn btn-info btn-sm">Details</a>
+                {{blog.categories}}<br>
+                {{blog.create_date}}<br>
+                Thoughts:  <a href="{{url_for('details_blog',id=blog._id)}}">Details</a><br><br>
                 <a href="{{ url_for('update_blog',id=blog._id)}}" class="btn btn-primary btn-sm">Edit</a>
                 <a href="{{ url_for('delete_blog',id=blog._id) }}" class="btn btn-danger btn-sm">Delete</a>
 
