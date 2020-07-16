@@ -59,7 +59,7 @@ def process_create():
         'uploaded_file_url': uploaded_file_url
     })
     flash(f"New insta - blog '{title}' has been created")
-    return redirect(url_for('home'))
+    return redirect(url_for('index'))
 
 # display the insta blog
 
