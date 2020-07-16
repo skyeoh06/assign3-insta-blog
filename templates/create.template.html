@@ -1,6 +1,7 @@
 {% extends 'layout.template.html' %} {% block content %}
 <div class="container" id="create">
     <h1>Create New Insta Blogs</h1>
+    <p>Upload a photo and share your thought about it.</p>
     <form method ="POST">
         <div class="form-group">
             <label>Title:</label>
@@ -19,7 +20,7 @@
             <textarea name="thought" class="form-control" maxlength="300" placeholder="max length 300"></textarea>
         </div>
         <div>
-            <a id="upload_widget" class="cloudinary-button">Upload Images</a>
+            <a id="upload_widget" class="cloudinary-button">Upload Photo</a>
             <input type="hidden" id="uploaded_file_url" name="uploaded_file_url"/>
             <br/>
             <p id="uploaded_file_display" style="display:none">Uploaded File Name:
