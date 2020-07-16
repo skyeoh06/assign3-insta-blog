@@ -16,7 +16,7 @@
         </div>
         <div class="form-group">
             <label>Thoughts:</label>
-            <textarea name="thought" class="form-control"></textarea>
+            <textarea name="thought" class="form-control" maxlength="300" placeholder="max length 300"></textarea>
         </div>
         <div>
             <a id="upload_widget" class="cloudinary-button">Upload Images</a>
@@ -56,6 +56,7 @@
         document.getElementById("upload_widget").addEventListener("click", function(){
                 myWidget.open();
         }, false);
+        
 	</script>
 {%endblock%}	
 

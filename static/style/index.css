@@ -76,3 +76,9 @@ input[type=submit] {
   margin: 8px 0;
   box-sizing: border-box;
 }
+
+/*view page*/
+#blog-image img{
+    width: 80%;
+    height: 80%;
+}

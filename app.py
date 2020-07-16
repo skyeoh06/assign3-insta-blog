@@ -5,6 +5,7 @@ from dotenv import load_dotenv
 import pymongo
 import datetime
 
+
 load_dotenv()
 
 app = Flask(__name__)
@@ -50,23 +51,26 @@ def process_create():
     thought = request.form.get('thought')
     uploaded_file_url = request.form.get('uploaded_file_url')
 
-    # convert the string of the data into an actual date object
-    date = datetime.datetime.strptime(date, "%Y-%m-%d")
-
     client[DB_NAME].pictures.insert_one({
         'title': title,
         'categories': categories,
-        'create_date': date,
+        'create_date': datetime.datetime.strptime(date, "%Y-%m-%d"),
         'thoughts': thought,
         'uploaded_file_url': uploaded_file_url
     })
-    return "blog created"
+    flash(f"New insta - blog '{title}' has been created")
+    return redirect(url_for('home'))
 
 # display the insta blog
+
+
 @app.route('/view')
 def view():
-    return render_template('view.template.html')
-    
+    all_blog = client[DB_NAME].pictures.find()
+    return render_template('view.template.html',
+                           all_blog=all_blog)
+
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
