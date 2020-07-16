@@ -11,7 +11,11 @@
             </div>
             <div class="col-sm-3" id="blog-content">
                 {{blog.title}}<br>
-                {{blog.thoughts}}
+                {{blog.thoughts}}<br><br>
+                <a href="{{url_for('details_blog',id=blog._id)}}" class="btn btn-info btn-sm">Details</a>
+                <a href="{{ url_for('update_blog',id=blog._id)}}" class="btn btn-primary btn-sm">Edit</a>
+                <a href="{{ url_for('delete_blog',id=blog._id) }}" class="btn btn-danger btn-sm">Delete</a>
+
             </div>
         {%endfor%}
         </div>

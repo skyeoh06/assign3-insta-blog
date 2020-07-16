@@ -7,7 +7,7 @@
     z-index: 1;
     top: 0;
     left: 0;
-    background-color: rgb(187, 206, 195);
+    background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%);
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
@@ -37,7 +37,7 @@
 .openbtn {
     font-size: 20px;
     cursor: pointer;
-    background-color:rgb(187, 206, 195);;
+    background-image: linear-gradient(-20deg, #616161 0%, #9bc5c3 100%);
     color:rgb(28, 28, 107);
     padding: 10px 15px;
     border: none;
@@ -67,6 +67,7 @@
 
 /*create page*/
 #create{
+        color:rgb(28, 28, 107);
         background-color: rgb(187, 206, 195);
 }
 
@@ -78,6 +79,12 @@ input[type=submit] {
 }
 
 /*view page*/
+#view{
+    color:rgb(28, 28, 107);
+    background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+}
+
+
 #blog-image img{
     width: 80%;
     height: 80%;

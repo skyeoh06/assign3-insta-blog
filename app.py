@@ -71,6 +71,31 @@ def view():
                            all_blog=all_blog)
 
 
+
+# details of the blog
+
+
+@app.route('/details')
+def details_blog(id):
+    return "details"
+
+
+# update of the blog
+
+
+@app.route('/update')
+def update_blog(id):
+    return "update"
+
+
+# delete of the blog
+
+
+@app.route('/update')
+def delete_blog(id):
+    return "delete"
+
+
 # "magic code" -- boilerplate
 if __name__ == '__main__':
     app.run(host=os.environ.get('IP'),
