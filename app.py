@@ -37,7 +37,7 @@ def index():
 
 @app.route('/search')
 def search_title():
-    return render_template('search.template.html', title="Result")
+    return render_template('search.template.html', title="Search")
 
 # Create a insta blogger
 

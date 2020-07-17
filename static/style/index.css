@@ -70,32 +70,44 @@
     height: 80%;
     
 }
-/*search*/
-#search-form {
-  display:block;
-  left:50%;
-  position:absolute;
-  top:30%;
-  input[type=search] {
-    border:solid 3px #fff;
-    box-sizing:border-box;
-    font-size:2em;
-    height:2em;
-    margin-left:-15vw;
-    outline:solid #fc0 0;
-    padding:.5em;
-    transition:all 2s ease-in;
-    width:30vw;
-    z-index:1;
-    &:focus {
-      border:solid 3px #09f;      
-      outline:solid #fc0 2000px;
-    }
-  }
-  
+/*search page*/
+.blur-background{
+    background-image: url("/static/images/home-bg.jpg");
+    /*blur effect*/
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
 
+.search-content{
+    color: white;
+    font-weight: bold;
+    border: 3px solid #f1f1f1;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 70%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 25px;
+}  
+#search-form{
+    font-size: 25px;
+    color:rgb(28, 28, 107);
+    border-radius: 25px;
 
+}
+input[type=search]{
+    border-radius: 5px;
+    background-color: transparent;
+    border: 3px solid #f1f1f1;
+}
 /*create page*/
 #create{
         color:rgb(28, 28, 107);
