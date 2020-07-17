@@ -13,6 +13,7 @@
     <title>InstaBlogger - {{ title }} </title>		
 </head>			
 <body>	
+
 <section>
     <!--Navigation Bar-->
     <div id="mySidebar" class="sidebar">
@@ -20,7 +21,9 @@
         <a href="{{url_for('index')}}">Home</a>
         <a href="{{url_for('create')}}">Create</a>
         <a href="{{url_for('view')}}">View</a>
+        <a href="{{url_for('search_title')}}">Search</a>
     </div>
+    
     <button class="openbtn" onclick="openNav()">☰ NavBar</button> 		
 	<div class="container">	
 	{%block content %}{%endblock%}		

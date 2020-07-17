@@ -31,6 +31,14 @@ DB_NAME = "insta_blogger"
 def index():
     return render_template('index.template.html', title="Home")
 
+
+# Search a insta blog
+
+
+@app.route('/search')
+def search_title():
+    return render_template('search.template.html', title="Result")
+
 # Create a insta blogger
 
 
