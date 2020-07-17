@@ -58,8 +58,9 @@ def process_create():
         'thoughts': thought,
         'uploaded_file_url': uploaded_file_url
     })
-    return redirect(url_for('index'))
     flash(f"New insta - blog '{title}' has been created")
+    return redirect(url_for('index'))
+
 
 # display the insta blog
 
@@ -67,7 +68,7 @@ def process_create():
 @app.route('/view')
 def view():
     all_blog = client[DB_NAME].pictures.find()
-    return render_template('view.template.html',
+    return render_template('view.template.html', title="View",
                            all_blog=all_blog)
 
 # details of the blog
@@ -76,10 +77,9 @@ def view():
 @app.route('/details/<id>')
 def details_blog(id):
     blog = client[DB_NAME].pictures.find_one({
-        '_id' : ObjectId(id)
+        '_id': ObjectId(id)
     })
-
-    return render_template('details_blog.template.html' , blog=blog,
+    return render_template('details_blog.template.html', title="Details", blog=blog,
                            cloud_name=CLOUD_NAME,
                            upload_preset=UPLOAD_PRESET)
 
@@ -87,17 +87,51 @@ def details_blog(id):
 # update of the blog
 
 
-@app.route('/update')
+@app.route('/update/<id>')
 def update_blog(id):
-    return "update"
+    blog = client[DB_NAME].pictures.find_one({
+        '_id': ObjectId(id)
+    })
+    return render_template('update.template.html', title="Update", blog=blog,
+                           cloud_name=CLOUD_NAME,
+                           upload_preset=UPLOAD_PRESET)
 
 
+@app.route('/update/<id>', methods=["POST"])
+def process_update_blog(id):
+    title = request.form.get('title')
+    blog_date = request.form.get('create-date')
+    blog_date = datetime.datetime.strptime(blog_date, "%Y-%m-%d")
+    client[DB_NAME].pictures.update_one({
+        "_id": ObjectId(id)
+    }, {
+        '$set': {
+            'title': title,
+            'categories': request.form.get('categories'),
+            'create_date': blog_date,
+            'thoughts': request.form.get('thought'),
+            'uploaded_file_url': request.form.get('uploaded_file_url')
+        }
+    })
+    flash(f"Update New insta - blog '{title}' has been created")
+    return render_template('index.template.html')
 # delete of the blog
 
 
-@app.route('/update')
+@app.route('/delete/<id>')
 def delete_blog(id):
-    return "delete"
+    blog = client[DB_NAME].pictures.find_one({
+        '_id': ObjectId(id)
+    })
+    return render_template('delete.template.html', title="Delete", blog=blog)
+
+
+@app.route('/delete/<id>')
+def process_delete_blog(id):
+    client[DB_NAME].pictures.remove({
+        "_id": objectId(id)
+    })
+    return render_template('index.template.html', title="Home")
 
 
 # "magic code" -- boilerplate
