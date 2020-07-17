@@ -58,7 +58,7 @@ def process_create():
         'thoughts': thought,
         'uploaded_file_url': uploaded_file_url
     })
-    flash(f"New insta - blog '{title}' has been created")
+    flash(f"New insta - blog '{{title}}' has been created")
     return redirect(url_for('index'))
 
 
@@ -67,9 +67,20 @@ def process_create():
 
 @app.route('/view')
 def view():
-    all_blog = client[DB_NAME].pictures.find()
+    # get the current page number
+    page_number = request.args.get('page')
+    # if there is no page number (aka, None) then assume we are at page 0
+    if page_number == None:
+        page_number = 0
+    else:
+        page_number = int(page_number)
+
+    print("page number=", page_number)
+    all_blog = client[DB_NAME].pictures.find().skip(
+        page_number*6).limit(6)
     return render_template('view.template.html', title="View",
-                           all_blog=all_blog)
+                           all_blog=all_blog,
+                           page_number=page_number)
 
 # details of the blog
 
@@ -79,7 +90,8 @@ def details_blog(id):
     blog = client[DB_NAME].pictures.find_one({
         '_id': ObjectId(id)
     })
-    return render_template('details_blog.template.html', title="Details", blog=blog,
+    return render_template('details_blog.template.html', title="Details",
+                           blog=blog,
                            cloud_name=CLOUD_NAME,
                            upload_preset=UPLOAD_PRESET)
 
