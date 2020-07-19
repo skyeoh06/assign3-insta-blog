@@ -22,7 +22,7 @@
         <div>
             <img src="{{blog.uploaded_file_url}}" id="uploaded-image" ><br>
             <a id="upload_widget" class="cloudinary-button">Upload Photo</a>
-            <input type="hidden" id="uploaded_file_url" name="uploaded_file_url"/> 
+            <input type="hidden" id="uploaded_file_url" name="uploaded_file_url" value="{{blog.uploaded_file_url}}"/> 
         </div>  
         <input type="submit" class="btn btn-primary"/>
     </form>
@@ -51,4 +51,3 @@
         
 	</script>
 {%endblock%}	
-
