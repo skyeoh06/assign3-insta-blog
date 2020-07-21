@@ -27,7 +27,16 @@
     
     <button class="openbtn" onclick="openNav()">☰ NavBar</button> 		
 	<div class="container">	
-	{%block content %}{%endblock%}		
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for m in messages %}
+                <div class="alert alert-success">
+                    {{m}}
+                </div>
+                {% endfor %}
+        {%endif%}
+        {%endwith%}
+	    {%block content %}{%endblock%}		
 	</div>		
 	<!-- Optional JavaScript -->		
 	<!-- jQuery first, then Popper.js, then Bootstrap JS -->		

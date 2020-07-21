@@ -66,7 +66,7 @@ def process_create():
         'thoughts': thought,
         'uploaded_file_url': uploaded_file_url
     })
-    flash(f"New insta - blog '{{title}}' has been created")
+    flash(f"New insta - blog '{title}' has been created")
     return redirect(url_for('index'))
 
 
@@ -146,10 +146,10 @@ def delete_blog(id):
     return render_template('delete.template.html', title="Delete", blog=blog)
 
 
-@app.route('/delete/<id>')
+@app.route('/delete/<id>', methods=["POST"])
 def process_delete_blog(id):
     client[DB_NAME].pictures.remove({
-        "_id": objectId(id)
+        '_id': ObjectId(id)
     })
     return render_template('index.template.html', title="Home")
 
