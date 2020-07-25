@@ -3,7 +3,7 @@ import os
 from bson.objectid import ObjectId
 from dotenv import load_dotenv
 import pymongo
-import datetime
+from datetime import datetime
 
 
 load_dotenv()
@@ -62,7 +62,7 @@ def process_create():
     client[DB_NAME].pictures.insert_one({
         'title': title,
         'categories': categories,
-        'create_date': datetime.datetime.strptime(date, "%Y-%m-%d"),
+        'create_date': date,
         'thoughts': thought,
         'uploaded_file_url': uploaded_file_url
     })
@@ -121,7 +121,6 @@ def update_blog(id):
 def process_update_blog(id):
     title = request.form.get('title')
     blog_date = request.form.get('create-date')
-    blog_date = datetime.datetime.strptime(blog_date, "%Y-%m-%d")
     client[DB_NAME].pictures.update_one({
         "_id": ObjectId(id)
     }, {
@@ -152,6 +151,7 @@ def process_delete_blog(id):
         '_id': ObjectId(id)
     })
     return render_template('index.template.html', title="Home")
+
 
 
 # "magic code" -- boilerplate

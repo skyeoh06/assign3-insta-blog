@@ -1,0 +1,33 @@
+{% extends 'layout.template.html' %} {% block content %}
+<!--Content-->
+<section>
+  <div class="jumbotron" id="Search Results">
+  <h2>List of the Search Result</h2>
+        {%if page_number > 0 %}
+            <a href="/view?page={{page_number-1}}" class="btn btn-primary">Previous 6 Listings</a>
+        {%endif%}
+        <a href="/view?page={{page_number+1}}" class="btn btn-primary">Next 6 Listings</a>
+
+        <h6>Page {{page_number+1}} </h6>
+        <div class="row" id="card-row">
+        {%for blog in all_blog%}
+            <div class="card">
+                <div class="wrapper">
+                    <div class="card-img">
+                        <img src="{{blog.uploaded_file_url}}" >
+                    </div>    
+                    <div class="card-body">    
+                            <p>Title: {{blog.title}}<br>
+                               Categories: {{blog.categories}}<br>
+                               Date: {{blog.create_date}}<br>
+                               Thoughts:  <a href="{{url_for('details_blog',id=blog._id)}}">Details</a></p>
+                            
+                    </div>
+                      
+                </div>
+            </div>
+        {%endfor%}
+        </div>
+  </div>
+</section>
+{%endblock%}
