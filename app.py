@@ -3,7 +3,6 @@ import os
 from bson.objectid import ObjectId
 from dotenv import load_dotenv
 import pymongo
-from datetime import datetime
 
 
 load_dotenv()
@@ -33,11 +32,33 @@ def index():
 
 
 # Search a insta blog
-
-
 @app.route('/search')
 def search_title():
-    return render_template('search.template.html', title="Search")
+    return render_template('search.template.html', title="search")
+
+
+@app.route('/search', methods=["POST"])
+def search_result():
+    search_title = request.form.get('search_title')
+    search_criteria = {}
+    
+    
+    if search_title != "":
+        search_criteria['title'] = {
+        "$regex": search_title,
+        "$options": "i"
+        }
+        blog = client[DB_NAME].pictures.find(search_criteria)
+        print(blog)
+        if blog==None:
+            flash(f"The title is not in the database.You can create one with it")
+            return redirect(url_for('index'))
+        else:
+            return render_template('result_search.template.html', 
+                                    title="Search Result", blog=blog)
+    else:
+        flash(f"The title is not in the database.You can create one with it")
+        return redirect(url_for('index'))
 
 # Create a insta blogger
 
@@ -151,7 +172,6 @@ def process_delete_blog(id):
         '_id': ObjectId(id)
     })
     return render_template('index.template.html', title="Home")
-
 
 
 # "magic code" -- boilerplate
