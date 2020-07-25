@@ -49,13 +49,15 @@ def search_result():
         "$options": "i"
         }
         blog = client[DB_NAME].pictures.find(search_criteria)
-        print(blog)
-        if blog==None:
+        blog1=client[DB_NAME].pictures.find_one(search_criteria)
+        if not blog1:
             flash(f"The title is not in the database.You can create one with it")
             return redirect(url_for('index'))
+            
         else:
             return render_template('result_search.template.html', 
                                     title="Search Result", blog=blog)
+            
     else:
         flash(f"The title is not in the database.You can create one with it")
         return redirect(url_for('index'))
