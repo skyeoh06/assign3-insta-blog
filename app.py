@@ -41,23 +41,22 @@ def search_title():
 def search_result():
     search_title = request.form.get('search_title')
     search_criteria = {}
-    
-    
+
     if search_title != "":
         search_criteria['title'] = {
-        "$regex": search_title,
-        "$options": "i"
+            "$regex": search_title,
+            "$options": "i"
         }
         blog = client[DB_NAME].pictures.find(search_criteria)
-        blog1=client[DB_NAME].pictures.find_one(search_criteria)
+        blog1 = client[DB_NAME].pictures.find_one(search_criteria)
         if not blog1:
             flash(f"The title is not in the database.You can create one with it")
             return redirect(url_for('index'))
-            
+
         else:
-            return render_template('result_search.template.html', 
-                                    title="Search Result", blog=blog)
-            
+            return render_template('result_search.template.html',
+                                   title="Search Result", blog=blog)
+
     else:
         flash(f"The title is not in the database.You can create one with it")
         return redirect(url_for('index'))
@@ -82,15 +81,22 @@ def process_create():
     thought = request.form.get('thought')
     uploaded_file_url = request.form.get('uploaded_file_url')
 
-    client[DB_NAME].pictures.insert_one({
-        'title': title,
-        'categories': categories,
-        'create_date': date,
-        'thoughts': thought,
-        'uploaded_file_url': uploaded_file_url
-    })
-    flash(f"New insta - blog '{title}' has been created")
-    return redirect(url_for('index'))
+    if uploaded_file_url!="":
+        client[DB_NAME].pictures.insert_one({
+            'title': title,
+            'categories': categories,
+            'create_date': date,
+            'thoughts': thought,
+            'uploaded_file_url': uploaded_file_url
+        })
+     
+        flash(f"New insta - blog '{title}' has been created")
+        return redirect(url_for('index'))
+    else:
+        flash(f"Please upload an image to continue")
+        return render_template('create.template.html', title="Create",
+                           cloud_name=CLOUD_NAME,
+                           upload_preset=UPLOAD_PRESET)
 
 
 # display the insta blog

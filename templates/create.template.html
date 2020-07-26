@@ -21,7 +21,7 @@
         </div>
         <div>
             <a id="upload_widget" class="cloudinary-button">Upload Photo</a>
-            <input type="hidden" id="uploaded_file_url" name="uploaded_file_url"/>
+            <input type="hidden" id="uploaded_file_url" name="uploaded_file_url" accept="image/*" required/>
             <br/>
             <p id="uploaded_file_display" style="display:none">Uploaded File Name:
             <span id="uploaded_file_name"></span></p>
@@ -40,7 +40,9 @@
                 if (!error && result && result.event === "success") { 
                     console.log('Done! Here is the image info: ', result.info); 
                     let fileURL = document.querySelector('#uploaded_file_url');
+                    
                     fileURL.value = result.info.url;
+            
 
                     let filenameDisplay = document.querySelector('#uploaded_file_display');
 
@@ -50,6 +52,7 @@
                     // fill in the file name
                     let filenameDisplaySpan = document.querySelector("#uploaded_file_name");
                     filenameDisplaySpan.innerText = result.info.original_filename;
+                        
                 }
                 
             }
