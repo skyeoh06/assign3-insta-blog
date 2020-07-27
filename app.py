@@ -82,7 +82,7 @@ def process_create():
     thought = request.form.get('thought')
     uploaded_file_url = request.form.get('uploaded_file_url')
 
-    if uploaded_file_url != "":
+    if (title and categories and date and thought and uploaded_file_url) != "":
         client[DB_NAME].pictures.insert_one({
             'title': title,
             'categories': categories,
@@ -94,7 +94,7 @@ def process_create():
         flash(f"New insta - blog '{title}' has been created")
         return redirect(url_for('index'))
     else:
-        flash(f"Please upload an image to continue")
+        flash("Please fill in the blank to continue")
         return render_template('create.template.html', title="Create",
                                cloud_name=CLOUD_NAME,
                                upload_preset=UPLOAD_PRESET)
