@@ -198,3 +198,9 @@ input[type=submit] {
 #result-img img{
     width:100%;
 }
+
+/*footer*/
+.footer{
+  width:100vw;
+  color: rgb(6, 9, 51);
+}

@@ -180,6 +180,7 @@ def process_delete_blog(id):
     client[DB_NAME].pictures.remove({
         '_id': ObjectId(id)
     })
+    flash("The Blog had been deleted")
     return render_template('index.template.html', title="Home")
 
 
