@@ -163,7 +163,7 @@ def process_update_blog(id):
         }
     })
     flash(f"Update New insta - blog '{title}' has been updated")
-    return render_template('index.template.html')
+    return redirect(url_for('view'))
 # delete of the blog
 
 
@@ -181,7 +181,7 @@ def process_delete_blog(id):
         '_id': ObjectId(id)
     })
     flash("The Blog had been deleted")
-    return render_template('index.template.html', title="Home")
+    return redirect(url_for('view'))
 
 
 # "magic code" -- boilerplate
