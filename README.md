@@ -9,15 +9,15 @@ By: Seok Khim Yeoh
 
 Link to the project demo on heroku [here](https://insta-blogs.herokuapp.com/).
 
-![Desktop image](https://github.com/skyeoh06/number-assign2/blob/master/testing/responsive.jpg)
+![Desktop image](https://github.com/skyeoh06/assign3-insta-blog/blob/master/testing/responsive.jpg)
 
 ## **Objective**
 
-This project started with from the founding of number API which reveals interesting facts about number in the view of math, trivia, year areas. As know, number involved almost all the events/activities in our daily life.
-With this, the objective of this webpage was design with the concept of fun and study for all ranges of users who interested about numbers.
+This project started with from the idea of webpage for community target purpose.As the tools for taking for photos become much
+and much easy access with phone users nowadays. I would like create webpage for user to share their photo and their thought of their sharing photos.
 
 ## **UX**
-Numbers appear in study, game , analysis and etc. 
+Photo appears in our daily almost a lot of thing. 
 * Facts(home) - a concept for users know about numbers beyond the meaning of the digit itself and its related to all event that happened.
 * Timeline - a concept for users to explore numbers knowledge of this area(when the number start to be created by different by different region of the world).
 * Maths - a concept for users to explore number meaning and its related to the mathematic areas.

@@ -162,7 +162,7 @@ def process_update_blog(id):
             'uploaded_file_url': request.form.get('uploaded_file_url')
         }
     })
-    flash(f"Update New insta - blog '{title}' has been created")
+    flash(f"Update New insta - blog '{title}' has been updated")
     return render_template('index.template.html')
 # delete of the blog
 
