@@ -78,10 +78,10 @@ def process_register():
             'email': email,
             'password': request.form.get('user-password')
         })
-        flash(f"Email'{email}' created Successfully")
+        flash(f"Email'{email}' was created successful.")
         return redirect(url_for('login'))
     else:
-        flash("Please login with registered email")
+        flash("Please login with registered email!")
         return redirect(url_for('login'))
 
 
@@ -105,14 +105,14 @@ def process_login():
         print(user.id)
         if request.form.get('user-password') == user_in_db['password']:
             flask_login.login_user(user)
-            flash(f"Email'{user.id}' logging Successfully")
+            flash(f"Email'{user.id}' has benn success logged in.")
             return render_template('index.template.html', title="Home")
         else:
-            flash("Wrong user or password")
+            flash("Wrong user or password!")
             return redirect(url_for('login'))
 
     else:
-        flash("Please register a valid email")
+        flash("Please register a valid email!")
         return redirect(url_for('register'))
 
 
@@ -125,7 +125,8 @@ def my_secret_page():
 @app.route('/logout')
 def logout():
     flask_login.logout_user()
-    return "logged out"
+    flash("Logout Successfully")
+    return redirect(url_for('index'))
 
 
 # Search a insta blog
@@ -153,7 +154,7 @@ def result_title():
                                result_title=result_title,
                                result_count=result_count)
     else:
-        flash("Please select a title for search")
+        flash("Please select a title for search!")
         return redirect(url_for('search'))
 
 
@@ -163,10 +164,14 @@ def result_title():
 @app.route('/create')
 def create():
     auth_user = session.get('_user_id')
-    return render_template('create.template.html', title="Create",
-                           auth_user=auth_user,
-                           cloud_name=CLOUD_NAME,
-                           upload_preset=UPLOAD_PRESET)
+    if auth_user is None:
+        flash("Please login to continue!")
+        return redirect(url_for('login'))
+    else:
+        return render_template('create.template.html', title="Create",
+                               auth_user=auth_user,
+                               cloud_name=CLOUD_NAME,
+                               upload_preset=UPLOAD_PRESET)
 
 
 # process the create form
@@ -190,8 +195,8 @@ def process_create():
             'user_email': user_email
         })
 
-        flash(f"New insta - blog '{title}' has been created")
-        return redirect(url_for('index'))
+        flash(f"New insta - blog '{title}' has been created.")
+        return redirect(url_for('view'))
     else:
         flash("Please fill in the blank to continue")
         return render_template('create.template.html', title="Create",
@@ -207,7 +212,7 @@ def view():
     # get the current page number
     page_number = request.args.get('page')
     # if there is no page number (aka, None) then assume we are at page 0
-    if page_number == None:
+    if page_number is None:
         page_number = 0
     else:
         page_number = int(page_number)
@@ -250,7 +255,7 @@ def update_blog(id):
                                cloud_name=CLOUD_NAME,
                                upload_preset=UPLOAD_PRESET)
     else:
-        flash("Invalid email for edit")
+        flash("Invalid email for editing")
         return redirect(url_for('view'))
 
 
@@ -271,7 +276,7 @@ def process_update_blog(id):
             'user_email': user_email
         }
     })
-    flash(f"Update New insta - blog '{title}' has been updated")
+    flash(f"Insta - blog '{title}' has been updated.")
     return redirect(url_for('view'))
 # delete of the blog
 
@@ -299,7 +304,6 @@ def process_delete_blog(id):
     })
     flash("The Blog had been deleted")
     return redirect(url_for('view'))
-
 
 
 # "magic code" -- boilerplate
