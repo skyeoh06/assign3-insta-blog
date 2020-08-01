@@ -1,16 +1,38 @@
-{% extends 'layout.template.html' %} {% block content %}
+{% extends 'layout.template.html' %}	
+{% block css %}
+<!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+{%endblock%}	
+{% block content %}
 <!--Content-->
 <section>
     <div class="jumbotron" id="search">
         <div class="blur-background"></div>
         <div class="search-content">
-            <h2>Search by title of Insta Blog</h2>
-            <form id="search-form" method="POST">
-                <input type="search" name="search_title" maxlength="99" placeholder="ex.Tiramisu"/>
+            <h2>Search by select the Title</h2>
+            <form method="POST">
+                <div class="form-group">
+                    <label><h6>Title:</h6></label>
+                    <select name="search_title">
+                        <option value="" selected></option>
+                        {%for blog in blog_title %}
+                        <option value="{{blog.title}}">{{blog.title}}</option>
+                        {%endfor%}
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-info">Search</button>
             </form>
-
         </div>
     </div>
 </section>
+{%endblock%}
+{% block js %}
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        $(document).ready(function(){
+        $('select').formSelect();
+                });
+        
+    </script>
 {%endblock%}
