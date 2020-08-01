@@ -139,13 +139,16 @@ def logout():
 # Search a insta blog
 @app.route('/search')
 def search():
+    auth_user = session.get('_user_id')
     blog_title = client[DB_NAME].pictures.find()
     return render_template('search.template.html', title="search",
-                           blog_title=blog_title)
+                           blog_title=blog_title,
+                           auth_user=auth_user)
 
 
 @app.route('/search', methods=["POST"])
 def result_title():
+
     search_title = request.form.get('search_title')
     search_criteria = {}
 
@@ -156,10 +159,12 @@ def result_title():
         }
         result_title = client[DB_NAME].pictures.find(search_criteria)
         result_count = client[DB_NAME].pictures.find(search_criteria).count()
+        auth_user = session.get('_user_id')
         return render_template('result_title.template.html',
                                title="Result Title",
                                result_title=result_title,
-                               result_count=result_count)
+                               result_count=result_count,
+                               auth_user=auth_user)
     else:
         flash("Please select a title for search!")
         return redirect(url_for('search'))
@@ -227,9 +232,11 @@ def view():
     print("page number=", page_number)
     all_blog = client[DB_NAME].pictures.find().skip(
         page_number*6).limit(6)
+    auth_user = session.get('_user_id')
     return render_template('view.template.html', title="View",
                            all_blog=all_blog,
-                           page_number=page_number)
+                           page_number=page_number,
+                           auth_user=auth_user)
 
 # details of the blog
 
@@ -239,8 +246,10 @@ def details_blog(id):
     blog = client[DB_NAME].pictures.find_one({
         '_id': ObjectId(id)
     })
+    auth_user = session.get('_user_id')
     return render_template('details_blog.template.html', title="Details",
                            blog=blog,
+                           auth_user=auth_user,
                            cloud_name=CLOUD_NAME,
                            upload_preset=UPLOAD_PRESET)
 
@@ -296,9 +305,11 @@ def delete_blog(id):
     })
 
     if auth_user == blog['user_email']:
+        auth_user = session.get('_user_id')
         return render_template('delete.template.html',
                                title="Delete",
-                               blog=blog)
+                               blog=blog,
+                               auth_user=auth_user)
     else:
         flash("Invalid email for edit")
         return redirect(url_for('view'))
