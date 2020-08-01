@@ -23,6 +23,8 @@
         <a href="{{url_for('create')}}">Create</a>
         <a href="{{url_for('view')}}">View</a>
         <a href="{{url_for('search')}}">Search</a>
+        <a href="{{url_for('logout')}}">Logout</a>
+        
         
     </div>
     
@@ -37,6 +39,10 @@
                 {% endfor %}
         {%endif%}
         {%endwith%}
+    <div id="nav-right">
+        <a href="{{url_for('register')}}" class="btn btn-info btn-sm">Register</a>
+        <a href="{{url_for('login')}}" class="btn btn-info btn-sm">Login</a>
+    </div>    
 	    {%block content %}{%endblock%}	
         <div class="footer">
             <b>Copyright © 2020 Yeoh Seok Khim. All Rights Reserved</b>

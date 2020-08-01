@@ -46,7 +46,9 @@
 .openbtn:hover {
     background-color: #444;
 }
-
+#nav-right{
+    float:right;
+}
 
 /*index page*/
 #home{
@@ -101,8 +103,9 @@ button.btn.btn-info{
     border-radius: 5px;
     background-color:#445a86;
 }
-label{
+.search{
      color: #f1f1f1!important;
+     font-size:2rem;
 }
 /*create page*/
 #create{
@@ -134,7 +137,7 @@ input[type=submit] {
     width: 100%;
     border-top-left-radius: calc(.25rem - 1px);
     border-top-right-radius: calc(.25rem - 1px);
-    max-height: 200px;
+    height: 200px;
 }
 /*details page*/
 #details img {
@@ -190,6 +193,61 @@ input[type=submit] {
 }
 /*footer*/
 .footer{
-  width:100%;
+  width:100;
   color: rgb(6, 9, 51);
+}
+
+/*register*/
+.register-form{
+    color: #6e2f1a;
+    font-weight: bold;
+    border: 3px solid #6e2f1a;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 65%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 25px;
+} 
+
+.blur-background-register{
+   background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+    /*blur effect*/
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+/*login*/
+.login-form{
+    color: #326b3c;
+    font-weight: bold;
+    border: 3px solid #326b3c;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 65%;
+    padding: 10px;
+    text-align: center;
+    border-radius: 25px;
+} 
+
+.blur-background-login{
+   background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%);
+    /*blur effect*/
+    filter: blur(8px);
+    -webkit-filter: blur(8px);
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }

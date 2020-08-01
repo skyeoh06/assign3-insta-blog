@@ -16,10 +16,6 @@
 }
 
 /*view page*/
-@media(max-width:991px){
-
-}
-
 @media(max-width:400px){
     input[type=search]{
         width: 100%;

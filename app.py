@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
+import flask_login
 import os
 from bson.objectid import ObjectId
 from dotenv import load_dotenv
@@ -23,12 +24,108 @@ client = pymongo.MongoClient(MONGO_URI)
 # define my db_name
 DB_NAME = "insta_blogger"
 
+# Create the login manager and assign to our Flask app
+login_manager = flask_login.LoginManager()
+# tell Flask to use the Flask-Login's login manager
+login_manager.init_app(app)
 
+
+# User object
+# The user object basically represents one user
+class User(flask_login.UserMixin):
+    pass
+# user loader for the Flask-Login login manager
+
+
+@login_manager.user_loader
+def user_loader(email):
+    # find the user from the database by its email
+    user_in_db = client[DB_NAME].users.find_one({
+        "email": email
+    })
+    print(user_in_db)
+    if user_in_db:
+        # create a new user object
+        user = User()
+        # set the id of the user object to be the user's email
+        user.id = user_in_db['email']
+        return user
+    else:
+        return None
 # home page
+
 
 @app.route('/')
 def index():
     return render_template('index.template.html', title="Home")
+# register
+
+
+@app.route('/register')
+def register():
+    return render_template('register.template.html', title="register")
+
+
+@app.route('/register', methods=['POST'])
+def process_register():
+    email = request.form.get('user-email')
+    email_in_db = client[DB_NAME].users.find_one({
+        'email': email
+    })
+    if email != email_in_db:
+        client[DB_NAME].users.insert_one({
+            'username': request.form.get('user-name'),
+            'email': email,
+            'password': request.form.get('user-password')
+        })
+        flash(f"Email'{email}' created Successfully")
+        return redirect(url_for('login'))
+    else:
+        flash("Please login with registered email")
+        return redirect(url_for('login'))
+
+
+@app.route('/login')
+def login():
+    return render_template('login_form.template.html', title="Login")
+
+
+@app.route('/login', methods=["POST"])
+def process_login():
+
+    # grab the user from the db by email
+    user_in_db = client[DB_NAME].users.find_one({
+        'email': request.form.get('user-email')
+    })
+
+    if user_in_db:
+        user = User()
+        user.id = user_in_db['email']
+        print(user)
+        print(user.id)
+        if request.form.get('user-password') == user_in_db['password']:
+            flask_login.login_user(user)
+            flash(f"Email'{user.id}' logging Successfully")
+            return render_template('index.template.html', title="Home")
+        else:
+            flash("Wrong user or password")
+            return redirect(url_for('login'))
+
+    else:
+        flash("Please register a valid email")
+        return redirect(url_for('register'))
+
+
+@app.route('/restricted_page')
+@flask_login.login_required
+def my_secret_page():
+    return "Restricted Area Entered"
+
+
+@app.route('/logout')
+def logout():
+    flask_login.logout_user()
+    return "logged out"
 
 
 # Search a insta blog
@@ -50,11 +147,11 @@ def result_title():
             "$options": "i"
         }
         result_title = client[DB_NAME].pictures.find(search_criteria)
-        result_count=client[DB_NAME].pictures.find(search_criteria).count()
+        result_count = client[DB_NAME].pictures.find(search_criteria).count()
         return render_template('result_title.template.html',
-                            title="Result Title",
-                            result_title=result_title,
-                            result_count=result_count)
+                               title="Result Title",
+                               result_title=result_title,
+                               result_count=result_count)
     else:
         flash("Please select a title for search")
         return redirect(url_for('search'))
@@ -65,7 +162,9 @@ def result_title():
 
 @app.route('/create')
 def create():
+    auth_user = session.get('_user_id')
     return render_template('create.template.html', title="Create",
+                           auth_user=auth_user,
                            cloud_name=CLOUD_NAME,
                            upload_preset=UPLOAD_PRESET)
 
@@ -79,6 +178,7 @@ def process_create():
     date = request.form.get('create-date')
     thought = request.form.get('thought')
     uploaded_file_url = request.form.get('uploaded_file_url')
+    user_email = session.get('_user_id')
 
     if (title and categories and date and thought and uploaded_file_url) != "":
         client[DB_NAME].pictures.insert_one({
@@ -86,7 +186,8 @@ def process_create():
             'categories': categories,
             'create_date': date,
             'thoughts': thought,
-            'uploaded_file_url': uploaded_file_url
+            'uploaded_file_url': uploaded_file_url,
+            'user_email': user_email
         })
 
         flash(f"New insta - blog '{title}' has been created")
@@ -137,18 +238,27 @@ def details_blog(id):
 
 @app.route('/update/<id>')
 def update_blog(id):
+    auth_user = session.get('_user_id')
     blog = client[DB_NAME].pictures.find_one({
         '_id': ObjectId(id)
     })
-    return render_template('update.template.html', title="Update", blog=blog,
-                           cloud_name=CLOUD_NAME,
-                           upload_preset=UPLOAD_PRESET)
+
+    if auth_user == blog['user_email']:
+        return render_template('update.template.html', title="Update",
+                               blog=blog,
+                               auth_user=auth_user,
+                               cloud_name=CLOUD_NAME,
+                               upload_preset=UPLOAD_PRESET)
+    else:
+        flash("Invalid email for edit")
+        return redirect(url_for('view'))
 
 
 @app.route('/update/<id>', methods=["POST"])
 def process_update_blog(id):
     title = request.form.get('title')
     blog_date = request.form.get('create-date')
+    user_email = session.get('_user_id')
     client[DB_NAME].pictures.update_one({
         "_id": ObjectId(id)
     }, {
@@ -157,7 +267,8 @@ def process_update_blog(id):
             'categories': request.form.get('categories'),
             'create_date': blog_date,
             'thoughts': request.form.get('thought'),
-            'uploaded_file_url': request.form.get('uploaded_file_url')
+            'uploaded_file_url': request.form.get('uploaded_file_url'),
+            'user_email': user_email
         }
     })
     flash(f"Update New insta - blog '{title}' has been updated")
@@ -167,10 +278,18 @@ def process_update_blog(id):
 
 @app.route('/delete/<id>')
 def delete_blog(id):
+    auth_user = session.get('_user_id')
     blog = client[DB_NAME].pictures.find_one({
         '_id': ObjectId(id)
     })
-    return render_template('delete.template.html', title="Delete", blog=blog)
+
+    if auth_user == blog['user_email']:
+        return render_template('delete.template.html',
+                               title="Delete",
+                               blog=blog)
+    else:
+        flash("Invalid email for edit")
+        return redirect(url_for('view'))
 
 
 @app.route('/delete/<id>', methods=["POST"])
@@ -180,6 +299,7 @@ def process_delete_blog(id):
     })
     flash("The Blog had been deleted")
     return redirect(url_for('view'))
+
 
 
 # "magic code" -- boilerplate
