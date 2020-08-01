@@ -42,6 +42,7 @@
     <div id="nav-right">
         <a href="{{url_for('register')}}" class="btn btn-info btn-sm">Register</a>
         <a href="{{url_for('login')}}" class="btn btn-info btn-sm">Login</a>
+        <p>User:{{auth_user}}</p>
     </div>    
 	    {%block content %}{%endblock%}	
         <div class="footer">

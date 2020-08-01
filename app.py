@@ -1,4 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, flash, session
+from flask import render_template
+from flask import Flask, request
+from flask import url_for, flash, session, redirect
 import flask_login
 import os
 from bson.objectid import ObjectId
@@ -57,7 +59,10 @@ def user_loader(email):
 
 @app.route('/')
 def index():
-    return render_template('index.template.html', title="Home")
+    auth_user = session.get('_user_id')
+    return render_template('index.template.html',
+                           title="Home",
+                           auth_user=auth_user)
 # register
 
 
@@ -105,8 +110,10 @@ def process_login():
         print(user.id)
         if request.form.get('user-password') == user_in_db['password']:
             flask_login.login_user(user)
-            flash(f"Email'{user.id}' has benn success logged in.")
-            return render_template('index.template.html', title="Home")
+            auth_user = session.get('_user_id')
+            flash(f"Email'{user.id}' has been success logged in.")
+            return render_template('index.template.html', title="Home",
+                                   auth_user=auth_user)
         else:
             flash("Wrong user or password!")
             return redirect(url_for('login'))
