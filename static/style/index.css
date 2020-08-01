@@ -190,6 +190,6 @@ input[type=submit] {
 }
 /*footer*/
 .footer{
-  width:100vw;
+  width:100%;
   color: rgb(6, 9, 51);
 }
