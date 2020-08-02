@@ -16,49 +16,68 @@ Link to the project demo on heroku [here](https://insta-blogs.herokuapp.com/).
 This project started with from the idea of webpage for community target purpose.As the tools for taking for photos become much
 and much easy access with phone users nowadays. I would like create webpage for user to share their photo and their thought of their sharing photos.
 
+
 ## **UX**
-Photo appears in our daily almost a lot of thing. 
-* Facts(home) - a concept for users know about numbers beyond the meaning of the digit itself and its related to all event that happened.
-* Timeline - a concept for users to explore numbers knowledge of this area(when the number start to be created by different by different region of the world).
-* Maths - a concept for users to explore number meaning and its related to the mathematic areas.
-* Numerology - a concept for users to explore the uses of analysia number related to their DOB and Names and suggestion for their life decision.
-* Game - a concept for users to play uses of random number that just for fun.
+Easy access to camera make user use it almost to replace paper as tools for the daily activities such as taking notes, sharing, and save. 
+* Register - for new user to this webpage to register an account for create, edit or delete process in this website.
+* Login - Upon sucess register, User can CUD(create, Update and delete) the insta  blog after success log in and it limit to their own post only.
+* Home - A home page to demonstrate what is the idea and use of this webpage about.
+* Create - A form platform for create an insta-blog with necessary attribute to be fill in.
+* view - A page for all users to view idea or sharing that being created by other users so far. A details link for thought attributes enable users to view more clear the info in a
+new page.Edit (update) and delete button is individually placed in each blog for user carried those process separately on selected post only.
+* Search - A form which can search the current exit blog by dropdown of the title available.
+* Logout - To exit from your account on this webpage.
+An indicator about current login user email is able to be see on each page on right top below the register and login button.
+
 
 
 ## **UI**
 1.Project Strategy
 * The Navigation is responsive for different sizes of screen with uses of bootstrap cdn. 
-* For the screen width smaller than 1000px, a dropdown menu with links to the pages of the website for users to navigate there directly.
-* For the screen width larger than 1000px, a nav-bar is placed on the center top of the webpage and fixed top for users to easy access to navigate to other page content of the website.
-* With the code of Javasript, it highlights the title(navbar item) that being access by users. This show to the users idea of the page that currenly being viewed.
+* For the navbar,a side bar with toggle effect(with javascript) were choose for easy view in regardless of screen size.
+* Each success activities such as login, update and etc will be indicated on a flash message on top of page.
 * Google [fonts] (https://fonts.google.com/specimen/Playfair+Display?selection.family=Playfair+Display) were chosen for this website. This is choose for easy view for the users.
-* The page with color choose based on simple two color for clean , tidy webpage ideas.
-* The [Home](https://skyeoh06.github.io/number-assign2/#home) that provided users to explore the number facts by input in the column under "Please key in a number" and retrieve the result by clicking the button "Search".Re.lated info will be presented under the (Facts:) column below
-* The [Timeline](https://skyeoh06.github.io/number-assign2/#timeline), uses a vertical timeline css for clear and easy understand history of number presentation.
-* The [Mathematic](https://skyeoh06.github.io/number-assign2/#mathematic), uses of the flip card css to present the info number facts related to the mathematics.
-* The [Numerology](https://skyeoh06.github.io/number-assign2/#numerology), uses of simple presentation of two color and scroll bar content css for the content.
-* The [Game](https://skyeoh06.github.io/number-assign2/#game), uses of javascript to generate the random number code each times with the button "Generate" being clicked.
+* The page use blur effect, webgradient image background for each page presentation.
+* The [Home](https://insta-blogs.herokuapp.com/), a brief introduction of webpage ideas, register and login access button and current login user email info displayed in right top of the webpage.
+* The [Register](https://insta-blogs.herokuapp.com/register), uses of a form format for register attribute displays.
+* The [Login](https://insta-blogs.herokuapp.com/login), uses of a form format for login attribute displays (email and password).
+* The [Create](https://insta-blogs.herokuapp.com/create), uses of a form format and cloudinary tools for an insta blog required attributes fill in.
+* The [View](https://insta-blogs.herokuapp.com/view), uses of card format  for display all current viewable blog, a sorted listing idea for tidy of blog display and info about total current that can viewable.
+* The blog details of each blog thoughts, update/edit and delete button is placed on each card of individual blog. Once access, a link end with current blod id will display on the link as this
+  - details (https://insta-blogs.herokuapp.com/details/5f101e874d280d2a23320028)
+  - update (https://insta-blogs.herokuapp.com/update/5f101e874d280d2a23320028)
+  - delete (https://insta-blogs.herokuapp.com/delete/5f101e874d280d2a23320028).
+* The [Search](https://insta-blogs.herokuapp.com/search), use of dropdown with all the available title to be select for view.
+* The logout on the navbar is a click access button, it activate once click on it.
+* Upload photo uses the cloudinary - upload widget (javascript) to store the upload photo.
+* The blog was stored in the MONGODB database with collection named pictures and photo in cloudinary with its link in the MONGODB database.
+* The users account that register in this blog was stored in MONGODB database  with collection named users.
+* jinja code involved in database data access process.
+
 
 2.Scope of the project
-* Home--number facts(in math, trivia,and year) info.
-* Timeline-History of number being invented.
-* Mathematic-Present the number facts in mathematics areas.
-* Numerology-A analysis in number of users Date of birth and name that impact the character of that users and his/hers choices.
-* Game-A uses of random number for a simple quick number generate game for users.
+* Register , login - A user account required for create, update and delete an insta-blog in the webpage.
+* Create - List of attributes about an insta blog and required to fill in for sucess created.
+* View - Info about the blog collection on this page such as total number of blog, access to read by all users, while update and delete only accessible by user who created it.
+* Search - The blog can be search by title of dropdown and viewable with and without login account.
+* logout - Access via upon on click it from nacbar.
+* Flash - uses for acknowledgement that process of edit, create and etc was success.
+* relationships of database collection - between two collection of database, user emaill attribute was used for the connection.
+
 
 3.Layout Draft
-The Draft of layour can be view in this folder link:
-[layout](https://github.com/skyeoh06/number-assign2/tree/master/XD-layout%20draft)
+The Draft of layout and ER diagram for relationships collection of database can be view in this folder link:
+[layout](https://github.com/skyeoh06/assign3-insta-blog/tree/master/static/draft)
 
 ## **Features**
 1.Existing Features
 * Button click function
-* Timeline
-* Flip Card
+* Form
+* Flash
 * The webpage is mobile-friendly and reponsive.
 
-2.Additional Features to be implementer in th future.
-*more commercial value info and design
+2.Additional Features to be implemented in the future.
+*searcable with different attribute.
 
 ## **Technologies Used**
 ## **Technologies Used**
@@ -72,31 +91,39 @@ The Draft of layour can be view in this folder link:
 
 5. Color Picker (https://www.google.com/search?q=color+picker) The Project uses Color picker to style the background image and font color for comfortable view.
 
-6. JQuery (https://api.jquery.com/jquery.ajax/) The Projects uses ajax-Jquery library for code generate.
+6. JQuery (https://code.jquery.com/) The Projects uses Jquery library for toggle effect of navbar.
 
-7. Axios (https://cdnjs.com/) The project uses the axios library to access the number API website.
+7. Materialize (https://materializecss.com/getting-started.html /) The project uses the materializecss for search form format.
+
+8. Jinja (https://jinja.palletsprojects.com/en/2.11.x/) The project uses jinja code for data access with MONGO database.
+
+9. Upload -widget cloudinary (https://widget.cloudinary.com/) The project uses this features for photo database and CRUD.
+
+10. MONGODD (https://www.mongodb.com/) The database platform for this project.
+
+11. Python (https://www.python.org/) The project uses features of python language for each features of the webpage.
+
+12. Heroku (https://www.heroku.com/) The project uses heroku for webpage deployment.
 
 ## **Testing**
 Testing result as below folder:
-[testing](https://github.com/skyeoh06/number-assign2/tree/master/testing)
+[testing](https://github.com/skyeoh06/assign3-insta-blog/tree/master/testing)
 
 ## **Deployment**
-This site is hosted using GitHub pages, deployed directly from the master branch. The deployed site will update automatically upon new commits to the master branch. In order for the site to deploy correctly on GitHub pages, the landing page must be named index.html.
+This site is hosted using GitHub pages, editing in gitpod. Github link [here](https://github.com/skyeoh06/assign3-insta-blog)
 
-To run locally, you can clone this repository directly into the editor of your choice by pasting git clone hhttps://github.com/skyeoh06/number-assign2 into your terminal.
+It is deploy in herokuapp. 
 
-There is not difference for deployment version and development version
+There is not difference for deployment version and development version.
 
 ## **Credits**
 **(1) Content**
 
-Info on numbersapi from http://numbersapi.com/
+Info on cloudinary from https://cloudinary.com/
 
-Info on timeline from https://en.wikipedia.org/wiki/Timeline_of_numerals_and_arithmetic
+Info on mongodb from https://www.mongodb.com/
 
-Info on mathematics from https://bestlifeonline.com/number-facts/
-
-Info on numerology from https://www.allure.com/story/numerology-how-to-calculate-life-path-destiny-number
+Info on materializecss from https://materializecss.com/getting-started.html/
 
 **(2) Media**
 The image was search from http://www.goole.com 

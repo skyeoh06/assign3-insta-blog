@@ -8,7 +8,7 @@
         {%endif%}
         <a href="/view?page={{page_number+1}}" class="btn btn-primary">Next 6 Listings</a>
 
-        <h6>Page {{page_number+1}} </h6>
+        <h6>Page {{page_number+1}} of total blog :{{blog_count}}</h6>
         <div class="row" id="card-row">
         {%for blog in all_blog%}
             <div class="card">

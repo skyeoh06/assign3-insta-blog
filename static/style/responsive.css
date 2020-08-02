@@ -37,3 +37,21 @@
         height: 350px;
     }
 }
+
+/*register page*/
+@media(max-width:451px){
+    .register-form{
+        width: 55%;
+    }
+    .login-form{
+        width: 56%;
+    }
+}
+@media(max-width:281px){
+    .register-form{
+        width: 80%;
+    }
+    .login-form{
+        width: 80%;
+    }
+}

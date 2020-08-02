@@ -232,9 +232,11 @@ def view():
     print("page number=", page_number)
     all_blog = client[DB_NAME].pictures.find().skip(
         page_number*6).limit(6)
+    blog_count = client[DB_NAME].pictures.find().count()    
     auth_user = session.get('_user_id')
     return render_template('view.template.html', title="View",
                            all_blog=all_blog,
+                           blog_count=blog_count,
                            page_number=page_number,
                            auth_user=auth_user)
 
