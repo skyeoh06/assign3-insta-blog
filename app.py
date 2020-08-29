@@ -60,7 +60,7 @@ def user_loader(email):
 @app.route('/')
 def index():
     auth_user = session.get('_user_id')
-    blog_count = client[DB_NAME].pictures.find().count() 
+    blog_count = client[DB_NAME].pictures.find().count()
     return render_template('index.template.html',
                            title="Home",
                            auth_user=auth_user,
@@ -142,15 +142,13 @@ def logout():
 @app.route('/search')
 def search():
     auth_user = session.get('_user_id')
-    blog_title = client[DB_NAME].pictures.find()
+
     return render_template('search.template.html', title="search",
-                           blog_title=blog_title,
                            auth_user=auth_user)
 
 
 @app.route('/search', methods=["POST"])
-def result_title():
-
+def search_result():
     search_title = request.form.get('search_title')
     search_criteria = {}
 
@@ -159,18 +157,19 @@ def result_title():
             "$regex": search_title,
             "$options": "i"
         }
-        result_title = client[DB_NAME].pictures.find(search_criteria)
-        result_count = client[DB_NAME].pictures.find(search_criteria).count()
-        auth_user = session.get('_user_id')
-        return render_template('result_title.template.html',
-                               title="Result Title",
-                               result_title=result_title,
-                               result_count=result_count,
-                               auth_user=auth_user)
-    else:
-        flash("Please select a title for search!")
-        return redirect(url_for('search'))
+        blog = client[DB_NAME].pictures.find(search_criteria)
+        blog1 = client[DB_NAME].pictures.find_one(search_criteria)
 
+        if blog1 == None:
+            flash(f"The title is not in the database.You can create one with it")
+            return redirect(url_for('index'))
+        else:
+            return render_template('result_title.template.html',
+                                   title="Search Result", blog=blog,
+                                   blog1=blog1)
+    else:
+        flash(f"The title is not in the database.You can create one with it")
+        return redirect(url_for('index'))
 
 # Create a insta blogger
 
@@ -234,7 +233,7 @@ def view():
     print("page number=", page_number)
     all_blog = client[DB_NAME].pictures.find().skip(
         page_number*6).limit(6)
-    blog_count = client[DB_NAME].pictures.find().count()    
+    blog_count = client[DB_NAME].pictures.find().count()
     auth_user = session.get('_user_id')
     return render_template('view.template.html', title="View",
                            all_blog=all_blog,

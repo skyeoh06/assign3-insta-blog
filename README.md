@@ -17,7 +17,9 @@
 
 ## **Deployed Link**
 
-Link to the deployed website on heroku [here](https://insta-blogs.herokuapp.com/).
+The process of deployed of this project was done with a new herokuapp. As the past deployed website was 
+disconnect from github for an unknown cause.
+Link to the working deployed website on heroku [here](https://sky-instablogs.herokuapp.com/).
 
 
 ## **UX/UI**

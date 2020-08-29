@@ -64,10 +64,7 @@ body{
 /*index page*/
 #home{
     color:rgb(28, 28, 107);
-    /*background-image: url("/static/images/home-bg.jpg");*/
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+    
     height: 100vh;
 }
 #home-description{
@@ -88,7 +85,6 @@ body{
     background-image: url("/static/images/home-bg.jpg");
     /*blur effect*/
     filter: blur(8px);
-    
     height: 100vh;
     background-position: center;
     background-repeat: no-repeat;
@@ -103,12 +99,12 @@ body{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    
+    transform: translate(-50%, -50%); 
     width: 65%;
-    padding: 10px;
+    padding: 100px;
     text-align: center;
     border-radius: 25px;
+    font-size:2rem;
 }  
 button.btn.btn-info{
     border-radius: 5px;
@@ -116,12 +112,10 @@ button.btn.btn-info{
 }
 .search{
      color: #f1f1f1!important;
-     font-size:2rem;
 }
 /*create page*/
 #create{
         color:rgb(28, 28, 107);
-        background-color: #bbcec3;
 }
 
 input[type=submit] {
@@ -134,13 +128,13 @@ input[type=submit] {
 /*view page*/
 #view{
     color:rgb(28, 28, 107);
-    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+    
     margin-bottom: 0;
     padding-bottom: 15px;   
 }
 .card{
     width:22rem;
-    background-image: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    
     padding:5px;
     margin:3px;
 }
@@ -166,7 +160,6 @@ input[type=submit] {
 /*Update page*/
 #update{
     color:rgb(26, 26, 128);
-    background-image: linear-gradient(to top, #0c3483 0%, #a2b6df 100%, #6b8cce 100%, #a2b6df 100%);
 }
 
 #update img{
@@ -174,10 +167,7 @@ input[type=submit] {
     height:15%;
 }
 /*search result page*/
-#search_result_t{
-    background-image: linear-gradient(120deg, #e0c3fc 0%, #8ec5fc 100%);
-    
-}
+
 #result_title{
     width: 100%;
     height: 75vh;
@@ -223,7 +213,7 @@ input[type=submit] {
 } 
 
 .blur-background-register{
-   background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
+  
     /*blur effect*/
     filter: blur(8px);
     -webkit-filter: blur(8px);
@@ -250,7 +240,7 @@ input[type=submit] {
 } 
 
 .blur-background-login{
-   background-image: linear-gradient(to top, #feada6 0%, #f5efef 100%);
+  
     /*blur effect*/
     filter: blur(8px);
     -webkit-filter: blur(8px);
