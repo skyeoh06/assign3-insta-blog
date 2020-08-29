@@ -14,7 +14,6 @@
                 <div class="form-group">
                     <label class="search">Title:</label>
                     <select name="search_title">
-                        <option value="" selected></option>
                         {%for blog in blog_title %}
                         <option value="{{blog.title}}">{{blog.title}}</option>
                         {%endfor%}
