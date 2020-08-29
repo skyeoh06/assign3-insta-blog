@@ -1,37 +1,60 @@
 
+# Code Institute Data Centric Development with Python
 # **Insta-Blog-assign3**
 
-### Data Centric Development Project
+## **Project Objectives**
+1. As the idea of app to serve the community, gives me the inspiration to create an Insta-Blog app.
+2. Insta- Blog is a short form for Instagram Blogs.
+3. Mobile devices become an important assets for community/society nowadays, and what connect between us is the social networking platform
+   such as Instagram, Facebook, Twitter,and etc.
+4. Upload photo to the social networking with a thought summary about it has become a habits among the community/society.
+5. This app is a platform for sharing an insta-blog from the users with other users among the community.
+6. The main purpose of this platform is to bring a warm and positive inspiration energy among the community by sharing user inspiration
+   thought from the photo that shared.
+7. Impact of social media is so deeply mark into our daily life and mindset.
+8. With an beautiful image and meaningful/inspiration blog will bring change/courage to the users to face the
+   difficulties in life sometimes.
 
-By: Seok Khim Yeoh
+## **Deployed Link**
 
-## **Demo**
-
-Link to the project demo on heroku [here](https://insta-blogs.herokuapp.com/).
-
-![Desktop image](https://github.com/skyeoh06/assign3-insta-blog/blob/master/testing/responsive.jpg)
-
-## **Objective**
-
-This project started with from the idea of webpage for community target purpose.As the tools for taking for photos become much
-and much easy access with phone users nowadays. I would like create webpage for user to share their photo and their thought of their sharing photos.
-
-
-## **UX**
-Easy access to camera make user use it almost to replace paper as tools for the daily activities such as taking notes, sharing, and save. 
-* Register - for new user to this webpage to register an account for create, edit or delete process in this website.
-* Login - Upon sucess register, User can CUD(create, Update and delete) the insta  blog after success log in and it limit to their own post only.
-* Home - A home page to demonstrate what is the idea and use of this webpage about.
-* Create - A form platform for create an insta-blog with necessary attribute to be fill in.
-* view - A page for all users to view idea or sharing that being created by other users so far. A details link for thought attributes enable users to view more clear the info in a
-new page.Edit (update) and delete button is individually placed in each blog for user carried those process separately on selected post only.
-* Search - A form which can search the current exit blog by dropdown of the title available.
-* Logout - To exit from your account on this webpage.
-An indicator about current login user email is able to be see on each page on right top below the register and login button.
+Link to the deployed website on heroku [here](https://insta-blogs.herokuapp.com/).
 
 
+## **UX/UI**
+## **Overview and Color**
+1. An image was choosen to be background of all page bring the idea that this is an Insta website.(Photo mainly).
+2. The Navbar was created with closed(toggle in) or open(toggle out) effect for user able to view a wide and clear navigation bar in any mobile device and 
+   Electronic devices.
+3. The Register and login features is placed on the right top of each page that can be easy access by user regardless which page they currently browsing at.
+4. Google font Playfair+Display was choosen as it's large size font effect will be view clear from small to large screens devices by users.
+5. Color was choose based compability effect to have attractive effect for user browsing.
 
-## **UI**
+## **User Stories**
+1. The User, as a Insta-blog inspirator, would like to create his/her inspiration Insta-Blog start with register an account in the webpage.
+2. The User will be able to register an account on this website.
+3. As logged in Users, he/she can create /update or delete the Insta-Blog with his/her own user account.
+4. The User with /without register account, will be able to browse through all the list of Insta-Blog in the webpage.
+5. The User with /without register account, can look for title of Insta-blog that wish to browse by search with a keyword.
+6. The User wwith /without register account, can view the details of selected Insta-Blog.
+
+## **Wireframes**
+The wireframes was created with the use of AdobeXD and it can be view [here].
+
+## **Features**
+## **Index/Home Page**
+1. Features that draws the User Attention.
+* The background was placed with a full page image as a bright spot to attract user attention.
+* Two Clear Idea of What is Insta-Blog was placed in the Home/Index page for user understanding.
+
+2. Features that allow user easily navigate to other page in the website.
+* A full wide navbar with toggle in / out effect was placed on the left side of the webpage.
+* Register, Login/Logout and User email Info was placed in easy spot by user area which is right top of each page.
+
+3. Features for user Notifcations.
+* A flash message will be prompt to user upon success of process such as "create blog successfully, logged In successfully,
+  etc.
+* Info about total of posted Insta-Blog will be shown on the Top of HomePage.
+
 1.Project Strategy
 * The Navigation is responsive for different sizes of screen with uses of bootstrap cdn. 
 * For the navbar,a side bar with toggle effect(with javascript) were choose for easy view in regardless of screen size.

@@ -1,24 +1,29 @@
 {% extends 'layout.template.html' %} {% block content %}
 <!--Content-->
 
-  <div class="jumbotron" id="home">
-    <div class="container" id="home-banner">
-        <h1>Insta-Blog</h1>
-        <p>
-            Instagram with Blog website to share your photo and thought among the
-            community.
-        </p>
-    </div>
-    <div class="container" id="home-description">
-        <div class="box example1">
-            <img src="/static/images/example1.jpg" alt="example1"> 
-            <p>~Keep Going~
-               Everything you need will come to you at the perfect time.</p>
+  <div class="container" id="home">
+    <div class="row" id="home-banner">
+        <div class="col-sm-12">
+            <h1>Insta-Blog</h1>
+            <p>Posted Insta-Blog :{{blog_count}}</p>
+            <p>
+                Instagram with Blog website to share your photo and thought among the
+                community.
+            </p>
         </div>
-        <div class="box example2">
-            <img src="/static/images/example2.jpg" alt="example2"> 
-            <p>To appreciate the beauty of a snowflake it is necessary to stand 
-            out in the cold.</p>
+    </div>
+    <div class="row" id="home-description">
+        <div class="col-sm-6">
+                <img src="/static/images/example1.jpg" alt="example1"> 
+                <p>~Keep Going~
+                Everything you need will come to you at the perfect time.</p>
+           
+        </div>
+        <div class="col-sm-6">
+                <img src="/static/images/example2.jpg" alt="example2"> 
+                <p>To appreciate the beauty of a snowflake it is necessary to stand 
+                out in the cold.</p>
+            
         </div>
     </div>
   </div>

@@ -60,9 +60,11 @@ def user_loader(email):
 @app.route('/')
 def index():
     auth_user = session.get('_user_id')
+    blog_count = client[DB_NAME].pictures.find().count() 
     return render_template('index.template.html',
                            title="Home",
-                           auth_user=auth_user)
+                           auth_user=auth_user,
+                           blog_count=blog_count)
 # register
 
 

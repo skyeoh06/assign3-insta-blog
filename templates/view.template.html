@@ -1,7 +1,7 @@
 {% extends 'layout.template.html' %} {% block content %}
 <!--Content-->
 
-<div class="jumbotron" id="view">
+<div class="container" id="view">
   <h2>List of the Insta Blog</h2>
         {%if page_number > 0 %}
             <a href="/view?page={{page_number-1}}" class="btn btn-primary">Previous 6 Listings</a>

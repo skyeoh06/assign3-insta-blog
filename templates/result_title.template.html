@@ -1,7 +1,7 @@
 {% extends 'layout.template.html' %} {% block content %}
 <!--Content-->
 
-  <div class="jumbotron" id="search_result_t">
+<div class="container" id="search_result_t">
   <a href="{{ url_for('search')}}" class="btn btn-info btn-sm">Back</a>
   <h2>List of the Search Result for : {{result_count}} </h2>
         <div class="row" id="result_title">
@@ -20,6 +20,6 @@
         {%endfor%}
         
         </div>
-  </div>
+</div>
 
 {%endblock%}

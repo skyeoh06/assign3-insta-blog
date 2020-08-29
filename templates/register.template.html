@@ -1,17 +1,17 @@
 {% extends 'layout.template.html' %} {% block content %}
 <!--Content-->
 
-    <div class="jumbotron" id="register">
+    <div class="container" id="register">
         <div class="blur-background-register"></div>
         <div class="register-form">
             <h1>Register</h1>
             <form method="POST">
                 <label>User Name:</label>
-                <input type="text" name="user-name"/><br>
+                <input type="text" name="user-name" size="20" required=""/><br>
                 <label>Email:</label>
-                <input type="text" name="user-email"/><br>
+                <input type="email" name="user-email" required=""/><br>
                 <label>Password:</label>
-                <input type="text" name="user-password"/><br>
+                <input type="password" name="user-password" required=""/><br>
                 <button type="submit" class="btn btn-info">register</button>
             </form>
         </div>   
