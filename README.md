@@ -126,64 +126,86 @@ Google Font Playfair+Display is used as the content font in the HTML documents i
 ## **Database**
 * A simple ERD diagram of data structure illustration is [here](https://github.com/skyeoh06/assign3-insta-blog/blob/master/document/assign3-ERD.pdf).
 * The explanation of the database structure is [here](https://github.com/skyeoh06/assign3-insta-blog/blob/master/database_structure.md).
-3.Layout Draft
-The Draft of layout and ER diagram for relationships collection of database can be view in this folder link:
-[layout](https://github.com/skyeoh06/assign3-insta-blog/tree/master/static/draft)
+https://materializecss.com/getting-started.html /) The project uses the materializecss for search form format.
 
 
 ## **Testing**
-## **Technologies Used**
-1. HTML5 (https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5): The project uses HTML5 to structure the layout of the website.
-
-2. CSS (https://developer.mozilla.org/en-US/docs/Web/CSS): The project uses CSS to add the stylistic designs to the webpages.
-
-3. Bootstrap (https://getbootstrap.com/docs/4.3/getting-started/introduction/): The project uses the Bootstrap framework to make structuring and styling of the webpages easier
-
-4. GoogleFonts (https://fonts.google.com/) The project uses GoogleFonts to style the typography used in the heading, paragraphs and buttons of the website.
-
-5. Color Picker (https://www.google.com/search?q=color+picker) The Project uses Color picker to style the background image and font color for comfortable view.
-
-6. JQuery (https://code.jquery.com/) The Projects uses Jquery library for toggle effect of navbar.
-
-7. Materialize (https://materializecss.com/getting-started.html /) The project uses the materializecss for search form format.
-
-8. Jinja (https://jinja.palletsprojects.com/en/2.11.x/) The project uses jinja code for data access with MONGO database.
-
-9. Upload -widget cloudinary (https://widget.cloudinary.com/) The project uses this features for photo database and CRUD.
-
-10. MONGODD (https://www.mongodb.com/) The database platform for this project.
-
-11. Python (https://www.python.org/) The project uses features of python language for each features of the webpage.
-
-12. Heroku (https://www.heroku.com/) The project uses heroku for webpage deployment.
-
-## **Testing**
-Testing result as below folder:
-[testing](https://github.com/skyeoh06/assign3-insta-blog/tree/master/testing)
+Testing result as [testing](https://github.com/skyeoh06/assign3-insta-blog/blob/master/tests.md)
 
 ## **Deployment**
-This site is hosted using GitHub pages, editing in gitpod. Github link [here](https://github.com/skyeoh06/assign3-insta-blog)
+Running the project locally
+This project is build using Gitpod. The steps I went through to run the project locally are as follows:
 
-It is deploy in herokuapp. 
+1. Sign up for a MongoDB Atlas account here
+2. Follow the steps to creating an Atlas cluster here
+3. Install the gitpod extensions for the local machine browser.
+4. Sign up for a github account and login.
+5. Sign up for a gitpod account and link it to github account.
+6. Go to the own github account page and start a new repository using the Code Institute Gitpod Full Template
+7. The project folder will be available on the personal github page repository.
+8. At the top right of the personal repository, you will be able to see the green coloured Gitpod button.
+9. Click on the Gitpod link to open up the development environment for this project in Gitpod.
+10. Once the project has fully loaded in the browser, a Visual Studio Code-like editor with a terminal will be seen.
+11. In the terminal, type in the below command to install the dependencies.
+$ pip3 -r requirements.txt 
+12. In the main directory of the gitpod project, an .env file have to be created. In the .env file the following environment variables have to be setup.
+a. MONGO_URI = mongodb+srv://[database_root_username]:[database_root_user_password]@[cluster_name].mongodb.net/[database_name]?retryWrites=true&w=majority
+The above is just an example mongodb connection string. The string can be found in the mongodb atlas connection in each project folder created.
+b. SECRET_KEY = a random string generated from any random key generator sites
+c. CLOUD_NAME = cloudinary name provided when signed up for cloudinary account.
+d. UPLOAD_PRESET = cloudinary upload preset.
+e. API_SECRET = api secret provided by cloudinary.
+f. API_KEY = api key provided by cloudinary.
 
-There is not difference for deployment version and development version.
+13. Finally, run the app on the terminal / command line interface by typing the below into the terminal like so:
+$ python3 app.py
+
+## **Deployment on Heroku**
+
+The steps taken to deploy this project on Heroku are as follows:
+
+1. Sign up for Heroku account
+2. Install Heroku CLI in the gitpod terminal if it hasn't been installed
+3. Upon success installed, access heroku login as below
+$ heroku login
+4. Login Heroku via the opened browser. If browser window is not able to display, open the site in a new window and login heroku.
+5. Type in the below to create a heroku app, where <the_name_of_the_project> is the name of the project to be deployed.
+$ heroku create <name_of_the_project>
+6. Create a remote repository by typing in
+$ git remote -v
+7. Install gunicorn with pip3
+$ pip3 install gunicorn
+8. Create a Procfile with the content "web gunicorn <name of the project>:app"
+9. Freeze all project dependencies by keying in to the terminal
+$ pip3 freeze --local > requirements.txt 
+10. Commit the project to github again
+11. Finally push the project to git as below:
+$ git push heroku master
+12. Before opening the deployed project url, the same environment variables like the local deployment have to be set up. To do that, in the terminal, type the following (the empty strings have to be filled in with the appropriate variable):
+$ heroku config:set MONGODB_URI='mongodb+srv://...'
+$ heroku config:set SECRET_KEY=''
+$ heroku config:set CLOUD_NAME=''
+$ heroku config:set API_KEY=''
+$ heroku config:set API_SECRET=''
+$ heroku config:set UPLOAD_PRESET=''
+13. Finally, the deployed url can be accessed from Heroku dashboard in their website : https://dashboard.heroku.com/apps/projectname where the [project name] is the name of the deployed project via an 'Open App" button on the dashboard, else the deployed link can also be found in the terminal message just right after executing step 11.
 
 ## **Credits**
 **(1) Content**
 
-Info on cloudinary from https://cloudinary.com/
+Info on [cloudinary] https://cloudinary.com/
 
-Info on mongodb from https://www.mongodb.com/
+Info on [mongodb]https://www.mongodb.com/
 
-Info on materializecss from https://materializecss.com/getting-started.html/
+
 
 **(2) Media**
-The image was search from http://www.goole.com 
+The image was search from [google](http://www.google.com )
 
 **(3) Acknowledgements**
 Get the idea of how platform look likes from Instagram #dailywebdesing
 Some code info from 
 
-https://www.codexworld.com/ 
+[codexworld]https://www.codexworld.com/ 
 
-https://www.w3schools.com/
+[w3schools]https://www.w3schools.com/
