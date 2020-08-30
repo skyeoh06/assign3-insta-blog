@@ -171,7 +171,9 @@ input[type=submit] {
     height:15%;
 }
 /*search result page*/
-
+input[type=search] {
+        width:40vw;
+}
 #result_title{
     width: 100%;
     height: 75vh;
