@@ -54,18 +54,18 @@ I ensured that:
 ## 4. Search Blog page
 
 I ensured that:
-- The title keyword for matching Insta-Blog will be reflected in the Result page.
+- The title keyword for matching Insta-Blog will be reflected in the Search Result page.
 
 ## 5. Register Page
 I ensured that:
 - The user fill in info was in correct type of format before submission.
-* redirect with flash message of suceess to Login page.
+* Able to redirect with flash message of suceess to Login page.
 
 ## 6. Login page
 
 I ensured that:
 - Registered user fills in valid and matching info in the form before submission.
-* redirect with flash message of suceess to Index/home page.
+* Able to redirect with flash message of suceess to Index/home page.
 
 ## 7. Edit Insta-Blog page
 
@@ -73,62 +73,22 @@ I ensured that:
 - form fill with correct data of selected Insta-Blog.
 - form valid for submission all of field data from user.
 * access to the edit selected Insta-Blog form only from Insta-Blog owner login user.
-redirect with flash message of suceess to Index/home page.
+* Able to redirect with flash message of suceess to View page.
 
 ## 8. Delete page
 
 I ensured that:
-- The Selected Insta-Blog was deleted by Insta-Blog owner login user.
+* The Selected Insta-Blog was deleted by Insta-Blog owner login user.
+* Able to redirect with flash message of suceess to View page.
 
-## Bugs 
+## 9. Search Result page
 
-1. Search ramen flavour:
-This was my initial code for users to search for ramen flavours. It worked for a few weeks and one day, it stopped working. An error message saying '1 attribute is expected but 2 were given' was displayed.
-```
-@app.route('/search_ramen')
-def search_ramen():
-    orig_query = request.args['query']
-    query = {'$regex': re.compile('.*{}.*'.format(orig_query)), '$options': 'i'}
-    print(query)
-    results=mongo.db.ramens.find({'flavour': query})
-    
-    ramen = []
-    for result in results:
-        ramen.append(result)
-    
-    return render_template('ramen_search.html', title="Search Results", query=orig_query, ramen_search=ramen)
-```
+I ensured that:
+* Only Insta-Blog with the keyword title will be displayed.
+* Able to redirect to search page with Back button.
 
-  I narrowed the bug down to the line 
-```
-query = {'$regex': re.compile('.*{}.*'.format(orig_query)), '$options': 'i'}
-```
-and if i removed the `$options` key-pair values, the code would work but doesn't not allow search on both upper and lower cases of the same search text input.
+## 10. Details Insta-Blog page
 
-  I changed the search codes to this and it worked again:
-```
-@app.route('/search_ramen/', methods=["GET", "POST"])
-def search_ramen():
-    post_request = request.args['query']
-    return render_template("ramen_search.html",
-                            title="Search Results",
-                            query=post_request,
-                            ramen_search=mongo.db.ramens.find({"flavour" : {"$regex": post_request, "$options": "i"}}),
-                            ramen_count=mongo.db.ramens.find({"flavour" : {"$regex": post_request, "$options": "i"}}).count())
-```
-
-2. Ramen cards:
-Initially, the images overflow and overspill out of the placeholder of the card. They appeared stretched at different screen sizes and were hard to manage. Also, I gave a very long text input for the 'flavour' field to see how the card would look and the card adjusted to the number of characters. This made the cards unbalanced and of different height sizes. To force the cards to look identical I set the image height to a fixed pixel, set the max-height of the card-content to a fixed pixel and gave a scroll function should the text content overflows from the height. Here are the code fix:
-```
-.card .card-image img {
-  height: 214px;
-}
-.index-page-card .card .card-content {
-  overflow-y: scroll;
-  max-height: 144px;
-}
-``` 
-    
-## Further Testing
-- In the future, I would like to implement unit testing while building a website of this kind
-- A special acknowledgement and thanks to family and friends for their time to test this website on their device and their invaluable feedback.
+I ensured that:
+* Only selected Insta-Blog details will be presented.
+* Able to redirect to view page with Back Button.
