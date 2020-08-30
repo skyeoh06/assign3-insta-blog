@@ -124,7 +124,7 @@ Google Font Playfair+Display is used as the content font in the HTML documents i
 * This project is based on MongoAtlas services.
 
 ## **Database**
-* A simple ERD diagram of data structure illustration is [here].
+* A simple ERD diagram of data structure illustration is [here](https://github.com/skyeoh06/assign3-insta-blog/blob/master/document/assign3-ERD.pdf).
 * The explanation of the database structure is [here].
 3.Layout Draft
 The Draft of layout and ER diagram for relationships collection of database can be view in this folder link:
