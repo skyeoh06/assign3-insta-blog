@@ -125,7 +125,7 @@ Google Font Playfair+Display is used as the content font in the HTML documents i
 
 ## **Database**
 * A simple ERD diagram of data structure illustration is [here](https://github.com/skyeoh06/assign3-insta-blog/blob/master/document/assign3-ERD.pdf).
-* The explanation of the database structure is [here].
+* The explanation of the database structure is [here](https://github.com/skyeoh06/assign3-insta-blog/blob/master/database_structure.md).
 3.Layout Draft
 The Draft of layout and ER diagram for relationships collection of database can be view in this folder link:
 [layout](https://github.com/skyeoh06/assign3-insta-blog/tree/master/static/draft)
