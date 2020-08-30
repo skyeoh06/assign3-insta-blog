@@ -40,7 +40,7 @@ Link to the working deployed website on heroku [here](https://sky-instablogs.her
 6. The User wwith /without register account, can view the details of selected Insta-Blog.
 
 ## **Wireframes**
-The wireframes was created with the use of AdobeXD and it can be view [here].
+The wireframes was created with the use of AdobeXD and it can be view [here](https://github.com/skyeoh06/assign3-insta-blog/blob/master/document/assign3-insta-blog.pdf).
 
 ## **Features**
 ## **Index/Home Page**
@@ -130,17 +130,8 @@ Google Font Playfair+Display is used as the content font in the HTML documents i
 The Draft of layout and ER diagram for relationships collection of database can be view in this folder link:
 [layout](https://github.com/skyeoh06/assign3-insta-blog/tree/master/static/draft)
 
-## **Features**
-1.Existing Features
-* Button click function
-* Form
-* Flash
-* The webpage is mobile-friendly and reponsive.
 
-2.Additional Features to be implemented in the future.
-*searcable with different attribute.
-
-## **Technologies Used**
+## **Testing**
 ## **Technologies Used**
 1. HTML5 (https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5): The project uses HTML5 to structure the layout of the website.
 

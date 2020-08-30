@@ -209,7 +209,7 @@ def process_create_blog():
         })
 
         flash(f"New insta - blog '{title}' has been created.")
-        return redirect(url_for('view'))
+        return redirect(url_for('view_blog'))
     else:
         flash("Please fill in the blank to continue")
         return render_template('create.template.html', title="Create",
@@ -275,7 +275,7 @@ def update_blog(id):
                                upload_preset=UPLOAD_PRESET)
     else:
         flash("Invalid email for editing")
-        return redirect(url_for('view'))
+        return redirect(url_for('view_blog'))
 
 
 @app.route('/update/<id>', methods=["POST"])
@@ -296,7 +296,7 @@ def process_update_blog(id):
         }
     })
     flash(f"Insta - blog '{title}' has been updated.")
-    return redirect(url_for('view'))
+    return redirect(url_for('view_blog'))
 # delete of the blog
 
 
@@ -315,7 +315,7 @@ def delete_blog(id):
                                auth_user=auth_user)
     else:
         flash("Invalid email for edit")
-        return redirect(url_for('view'))
+        return redirect(url_for('view_blog'))
 
 
 @app.route('/delete/<id>', methods=["POST"])
@@ -324,7 +324,7 @@ def process_delete_blog(id):
         '_id': ObjectId(id)
     })
     flash("The Blog had been deleted")
-    return redirect(url_for('view'))
+    return redirect(url_for('view_blog'))
 
 
 # "magic code" -- boilerplate
