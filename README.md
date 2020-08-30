@@ -126,7 +126,6 @@ Google Font Playfair+Display is used as the content font in the HTML documents i
 ## **Database**
 * A simple ERD diagram of data structure illustration is [here](https://github.com/skyeoh06/assign3-insta-blog/blob/master/document/assign3-ERD.pdf).
 * The explanation of the database structure is [here](https://github.com/skyeoh06/assign3-insta-blog/blob/master/database_structure.md).
-https://materializecss.com/getting-started.html /) The project uses the materializecss for search form format.
 
 
 ## **Testing**
@@ -149,13 +148,13 @@ This project is build using Gitpod. The steps I went through to run the project 
 11. In the terminal, type in the below command to install the dependencies.
 $ pip3 -r requirements.txt 
 12. In the main directory of the gitpod project, an .env file have to be created. In the .env file the following environment variables have to be setup.
-a. MONGO_URI = mongodb+srv://[database_root_username]:[database_root_user_password]@[cluster_name].mongodb.net/[database_name]?retryWrites=true&w=majority
+* MONGO_URI = mongodb+srv://[database_root_username]:[database_root_user_password]@[cluster_name].mongodb.net/[database_name]?retryWrites=true&w=majority
 The above is just an example mongodb connection string. The string can be found in the mongodb atlas connection in each project folder created.
-b. SECRET_KEY = a random string generated from any random key generator sites
-c. CLOUD_NAME = cloudinary name provided when signed up for cloudinary account.
-d. UPLOAD_PRESET = cloudinary upload preset.
-e. API_SECRET = api secret provided by cloudinary.
-f. API_KEY = api key provided by cloudinary.
+* SECRET_KEY = a random string generated from any random key generator sites
+* CLOUD_NAME = cloudinary name provided when signed up for cloudinary account.
+* UPLOAD_PRESET = cloudinary upload preset.
+* API_SECRET = api secret provided by cloudinary.
+* API_KEY = api key provided by cloudinary.
 
 13. Finally, run the app on the terminal / command line interface by typing the below into the terminal like so:
 $ python3 app.py
@@ -182,20 +181,20 @@ $ pip3 freeze --local > requirements.txt
 11. Finally push the project to git as below:
 $ git push heroku master
 12. Before opening the deployed project url, the same environment variables like the local deployment have to be set up. To do that, in the terminal, type the following (the empty strings have to be filled in with the appropriate variable):
-$ heroku config:set MONGODB_URI='mongodb+srv://...'
-$ heroku config:set SECRET_KEY=''
-$ heroku config:set CLOUD_NAME=''
-$ heroku config:set API_KEY=''
-$ heroku config:set API_SECRET=''
-$ heroku config:set UPLOAD_PRESET=''
+* $ heroku config:set MONGODB_URI='mongodb+srv://...'
+* $ heroku config:set SECRET_KEY=''
+* $ heroku config:set CLOUD_NAME=''
+* $ heroku config:set API_KEY=''
+* $ heroku config:set API_SECRET=''
+* $ heroku config:set UPLOAD_PRESET=''
 13. Finally, the deployed url can be accessed from Heroku dashboard in their website : https://dashboard.heroku.com/apps/projectname where the [project name] is the name of the deployed project via an 'Open App" button on the dashboard, else the deployed link can also be found in the terminal message just right after executing step 11.
 
 ## **Credits**
 **(1) Content**
 
-Info on [cloudinary] https://cloudinary.com/
+Info on [cloudinary] (https://cloudinary.com/)
 
-Info on [mongodb]https://www.mongodb.com/
+Info on [mongodb](https://www.mongodb.com/)
 
 
 
@@ -206,6 +205,6 @@ The image was search from [google](http://www.google.com )
 Get the idea of how platform look likes from Instagram #dailywebdesing
 Some code info from 
 
-[codexworld]https://www.codexworld.com/ 
+[codexworld](https://www.codexworld.com/ )
 
-[w3schools]https://www.w3schools.com/
+[w3schools](https://www.w3schools.com/)
