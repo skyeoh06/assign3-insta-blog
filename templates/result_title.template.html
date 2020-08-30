@@ -2,8 +2,8 @@
 <!--Content-->
 
 <div class="container" id="search_result_t">
-  <a href="{{ url_for('search')}}" class="btn btn-info btn-sm">Back</a>
-  <h2>List of the Search Result :</h2>
+  <a href="{{ url_for('search_blog')}}" class="btn btn-info btn-sm">Back</a>
+  <h2>List of the Search Result : {{blog_count}}</h2>
   <p>Scroll down to View All</p>
         <div class="row" id="result_title">
         {%for each in blog%}
@@ -15,7 +15,7 @@
                     <p>Thoughts: {{each.thoughts}}</p>
                 </div>
                 <div id="result-img">
-                    <img src="{{each.uploaded_file_url}}">
+                    <img src="{{each.uploaded_file_url}}" alt="image-blog">
                 </div>    
             </div>
         {%endfor%}

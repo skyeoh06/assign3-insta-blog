@@ -140,7 +140,7 @@ def logout():
 
 # Search a insta blog
 @app.route('/search')
-def search():
+def search_blog():
     auth_user = session.get('_user_id')
 
     return render_template('search.template.html', title="search",
@@ -159,14 +159,14 @@ def search_result():
         }
         blog = client[DB_NAME].pictures.find(search_criteria)
         blog1 = client[DB_NAME].pictures.find_one(search_criteria)
-
+        blog_count=client[DB_NAME].pictures.find(search_criteria).count()
         if blog1 == None:
             flash(f"The title is not in the database.You can create one with it")
             return redirect(url_for('index'))
         else:
             return render_template('result_title.template.html',
                                    title="Search Result", blog=blog,
-                                   blog1=blog1)
+                                   blog1=blog1, blog_count=blog_count)
     else:
         flash(f"The title is not in the database.You can create one with it")
         return redirect(url_for('index'))
@@ -175,7 +175,7 @@ def search_result():
 
 
 @app.route('/create')
-def create():
+def create_blog():
     auth_user = session.get('_user_id')
     if auth_user is None:
         flash("Please login to continue!")
@@ -189,7 +189,7 @@ def create():
 
 # process the create form
 @app.route('/create', methods=['POST'])
-def process_create():
+def process_create_blog():
     # extract information from the form
     title = request.form.get('title')
     categories = request.form.get('categories')
@@ -221,7 +221,7 @@ def process_create():
 
 
 @app.route('/view')
-def view():
+def view_blog():
     # get the current page number
     page_number = request.args.get('page')
     # if there is no page number (aka, None) then assume we are at page 0

@@ -25,7 +25,7 @@ Link to the working deployed website on heroku [here](https://sky-instablogs.her
 ## **UX/UI**
 ## **Overview and Color**
 1. An image was choosen to be background of all page bring the idea that this is an Insta website.(Photo mainly).
-2. The Navbar was created with closed(toggle in) or open(toggle out) effect for user able to view a wide and clear navigation bar in any mobile device and 
+2. The Navbar was created with closed(toggle in) or open(toggle out) effect from javascript for user able to view a wide and clear navigation bar in any mobile device and 
    Electronic devices.
 3. The Register and login features is placed on the right top of each page that can be easy access by user regardless which page they currently browsing at.
 4. Google font Playfair+Display was choosen as it's large size font effect will be view clear from small to large screens devices by users.
@@ -57,39 +57,75 @@ The wireframes was created with the use of AdobeXD and it can be view [here].
   etc.
 * Info about total of posted Insta-Blog will be shown on the Top of HomePage.
 
-1.Project Strategy
-* The Navigation is responsive for different sizes of screen with uses of bootstrap cdn. 
-* For the navbar,a side bar with toggle effect(with javascript) were choose for easy view in regardless of screen size.
-* Each success activities such as login, update and etc will be indicated on a flash message on top of page.
-* Google [fonts] (https://fonts.google.com/specimen/Playfair+Display?selection.family=Playfair+Display) were chosen for this website. This is choose for easy view for the users.
-* The page use blur effect, webgradient image background for each page presentation.
-* The [Home](https://insta-blogs.herokuapp.com/), a brief introduction of webpage ideas, register and login access button and current login user email info displayed in right top of the webpage.
-* The [Register](https://insta-blogs.herokuapp.com/register), uses of a form format for register attribute displays.
-* The [Login](https://insta-blogs.herokuapp.com/login), uses of a form format for login attribute displays (email and password).
-* The [Create](https://insta-blogs.herokuapp.com/create), uses of a form format and cloudinary tools for an insta blog required attributes fill in.
-* The [View](https://insta-blogs.herokuapp.com/view), uses of card format  for display all current viewable blog, a sorted listing idea for tidy of blog display and info about total current that can viewable.
-* The blog details of each blog thoughts, update/edit and delete button is placed on each card of individual blog. Once access, a link end with current blod id will display on the link as this
-  - details (https://insta-blogs.herokuapp.com/details/5f101e874d280d2a23320028)
-  - update (https://insta-blogs.herokuapp.com/update/5f101e874d280d2a23320028)
-  - delete (https://insta-blogs.herokuapp.com/delete/5f101e874d280d2a23320028).
-* The [Search](https://insta-blogs.herokuapp.com/search), use of dropdown with all the available title to be select for view.
-* The logout on the navbar is a click access button, it activate once click on it.
-* Upload photo uses the cloudinary - upload widget (javascript) to store the upload photo.
-* The blog was stored in the MONGODB database with collection named pictures and photo in cloudinary with its link in the MONGODB database.
-* The users account that register in this blog was stored in MONGODB database  with collection named users.
-* jinja code involved in database data access process.
+
+## **Create Page**
+1. User Creation features
+* As a login user, he/she can create a new Insta-Blog with her own account by fill in all the field of the form and click on submit
+  to upload the Insta-Blog to the database.
+* User that do not login in this website first, will be redirect to the login page. A Login button was placed for user with existing account can login
+ to the website while register button is for new user to register their accounts.
+
+## **View Page**
+1. User browsing features
+*  User with or without logged in first, can view all the current posted Insta-Blog in the website.
+*  User with or without logged in first, can view the thought content of the Insta-Blog by click on the Details link.
+*  As a login Userm, he/she can edit/delete his own posted Insta-Blog.
 
 
-2.Scope of the project
-* Register , login - A user account required for create, update and delete an insta-blog in the webpage.
-* Create - List of attributes about an insta blog and required to fill in for sucess created.
-* View - Info about the blog collection on this page such as total number of blog, access to read by all users, while update and delete only accessible by user who created it.
-* Search - The blog can be search by title of dropdown and viewable with and without login account.
-* logout - Access via upon on click it from nacbar.
-* Flash - uses for acknowledgement that process of edit, create and etc was success.
-* relationships of database collection - between two collection of database, user emaill attribute was used for the connection.
+## **Search Page**
+1. User Search features
+* User with or without logged in first, can search the Insta-Blog with fill in the keyword for the title of the Insta-Blog.
+* Upon User successfully submit the form, he/she will be redirect to a results page with a scroll down list of Insta-Blog that matched.
+* User will be notify with total of matched Insta-Blog on top of the Results page.
 
+## **Register Page**
+1. User Registration features
+* User will be redirect to "Register" form page when clicking on the register button.
+* User required to fill in correct format of info of each field for successfully submit register form.
 
+## **Login/Logout Page**
+1. User Login features
+* With an valid user account in the webite, user can login to the website by clicking on the login form.
+* As a registered user, he/she required to fill in matching email and password for login form submission.
+* As a login user, he/she will able to see their email id and logout button on top right of the Website.
+
+## **Technologies Used**
+The technologie that involved in this project are:
+The technologies used for this project are:
+1. [Flask (Release 1.1.2)](https://flask.palletsprojects.com/en/1.1.x/)  
+Flask is the microweb framework that supports and serves the web applications (services). It provides the logic and controls the database access,
+view templates and session management to the client. Flask is written in python and it is the main project requirement.
+2. [Python (Release 3.8.3)](https://www.python.org/downloads/release/python-383/)  
+Python is the programming language used in Flask.
+3. [HTML5](https://html.spec.whatwg.org/)  
+HTML is the markup language that structures the webpage documents.
+4. [CSS3](https://www.w3.org/TR/2001/WD-css3-roadmap-20010523/)  
+CSS is the style sheet language that supports the presentation of document written in HTML.
+5. [Jinja](https://jinja.palletsprojects.com/en/2.11.x/)  
+Jinja is leveraged by Flask as its template engine. Although HTML is still needed to structure the web documents, Jinja dynamizes the web documents.
+6. [Javascript and JQuery](https://developer.oracle.com/sg/javascript/)  
+Javascript and Jquery is used primarily to do DOM manipulation and it is the main engine to serve interactivity and event handling to the webpages. 
+7. [Gitpod](https://www.gitpod.io/)  
+Gitpod is an online IDE that can be launched in Github. It is used to develope and write the code for this project.
+8. [Git and Github](https://github.com/)  
+Github is an online hosting service for software development that utilizes Git for version control.
+9. [PYMongo Release 3.10.1](https://pymongo.readthedocs.io/en/stable/)  
+Pymongo is a Python driver for MongoDB. It is the engine that allows Flask to interface to MongoDB.
+10. [Cloudinary](https://cloudinary.com/)
+Cloudinary is used for its cloud-based image and video management platform to enhance user experience in this project's profile registration process.
+11. [Google Fonts](https://fonts.google.com/)
+Google Font Playfair+Display is used as the content font in the HTML documents in this projects. 
+12. [Bootstrap](https://www.bootstrapcdn.com/) is used for create, update process form.
+
+## **Database**
+* MongoDB is the database that used for this project. It is a cross platform document oriented database program.
+* MongoDB is classified as a NoSQL (non relational) database that stored data in JSON-like format.
+* MongoDB has a complete managed cloud database service named MongoDB Atlas.
+* This project is based on MongoAtlas services.
+
+## **Database**
+* A simple ERD diagram of data structure illustration is [here].
+* The explanation of the database structure is [here].
 3.Layout Draft
 The Draft of layout and ER diagram for relationships collection of database can be view in this folder link:
 [layout](https://github.com/skyeoh06/assign3-insta-blog/tree/master/static/draft)
